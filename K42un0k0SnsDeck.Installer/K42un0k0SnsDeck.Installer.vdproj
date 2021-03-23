@@ -37,6 +37,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -53,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -141,7 +165,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup1"
         "ProductCode" = "8:{66D08056-E290-42C2-9675-38438FC9339C}"
-        "PackageCode" = "8:{A89205E5-CFC5-40AC-887D-74621096AFED}"
+        "PackageCode" = "8:{43DFB8E8-3B17-465F-9B84-5BA276A45D50}"
         "UpgradeCode" = "8:{3F939B4B-B2D6-4AFF-A5D3-C45375642F3F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -261,17 +285,31 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_25366A59EC624087AFC017AE7E383E2E"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_178714FC11944D16B4F5E1534874BEEA"
             {
-            "Name" = "8:k42un0k0snsdeck shortcut"
+            "Name" = "8:k42un0k0 menu cut"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_4A1544A50E134CF2B6638EEC871C9D95"
+            "Target" = "8:_92A0AB751127414DA0E3A52504D8A72F"
+            "Folder" = "8:_F03BE58142854F43A9C778820458ECAF"
+            "WorkingFolder" = "8:_AE2810E422B14EB286F8BD7C5E25786D"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_36833C023DE1401A8DE821E7136078FB"
+            {
+            "Name" = "8:k42un0k0 short cut"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_92A0AB751127414DA0E3A52504D8A72F"
             "Folder" = "8:_4A1544A50E134CF2B6638EEC871C9D95"
-            "WorkingFolder" = "8:_4A1544A50E134CF2B6638EEC871C9D95"
+            "WorkingFolder" = "8:_AE2810E422B14EB286F8BD7C5E25786D"
             "Icon" = "8:"
             "Feature" = "8:"
             }
