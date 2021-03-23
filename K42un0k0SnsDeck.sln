@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K42un0k0SnsDeck", "K42un0k0SnsDeck\K42un0k0SnsDeck.csproj", "{D4D0FE5E-BF60-4B7A-88BA-1591E7D81399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K42un0k0SnsDeck", "K42un0k0SnsDeck\K42un0k0SnsDeck.csproj", "{D4D0FE5E-BF60-4B7A-88BA-1591E7D81399}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "K42un0k0SnsDeck.Installer", "K42un0k0SnsDeck.Installer\K42un0k0SnsDeck.Installer.vdproj", "{86BB1DD5-4557-43CD-A9F3-BC7331C6AB03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D4D0FE5E-BF60-4B7A-88BA-1591E7D81399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4D0FE5E-BF60-4B7A-88BA-1591E7D81399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4D0FE5E-BF60-4B7A-88BA-1591E7D81399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BB1DD5-4557-43CD-A9F3-BC7331C6AB03}.Debug|Any CPU.ActiveCfg = Debug
+		{86BB1DD5-4557-43CD-A9F3-BC7331C6AB03}.Debug|Any CPU.Build.0 = Debug
+		{86BB1DD5-4557-43CD-A9F3-BC7331C6AB03}.Release|Any CPU.ActiveCfg = Release
+		{86BB1DD5-4557-43CD-A9F3-BC7331C6AB03}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
