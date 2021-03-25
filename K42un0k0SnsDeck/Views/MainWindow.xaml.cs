@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace K42un0k0SnsDeck
+namespace K42un0k0SnsDeck.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

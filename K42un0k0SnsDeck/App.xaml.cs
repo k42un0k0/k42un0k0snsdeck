@@ -8,10 +8,23 @@ using System.Windows;
 
 namespace K42un0k0SnsDeck
 {
+    using Views;
+    using ViewModels;
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            var w = new MainWindow();
+            var vm = new MainWindowViewModel();
+
+            w.DataContext = vm;
+            w.Show();
+
+        }
     }
 }
