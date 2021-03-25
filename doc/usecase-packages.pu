@@ -2,6 +2,8 @@
 
 package 一般 {
 	(列で機能を表示する)
+	(Facebookにログインできる)
+	(複数のTwitterアカウントにログインできる)
 }
 
 package Twitter {

@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using K42un0k0SnsDeck.Views;
-using Prism.Commands;
+﻿using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace K42un0k0SnsDeck.ViewModels
 {
-    class MainWindowViewModel : BindableBase
+    class AccountListWindowViewModel : BindableBase
     {
-
         private Func<IContainerProvider> _getContainer;
-        public MainWindowViewModel(Func<IContainerProvider> getContainer)
+        public AccountListWindowViewModel(Func<IContainerProvider> getContainer)
         {
             _greeting = "こんにちは";
             _getContainer = getContainer;
@@ -32,16 +30,6 @@ namespace K42un0k0SnsDeck.ViewModels
         private void OnExchangeGreetingCommand()
         {
             Greeting = Greeting == "こんにちは" ? "こんばんわ" : "こんにちは";
-        }
-
-        private DelegateCommand _openAccountListWindow = null;
-
-        public DelegateCommand OpenAccountListWindow => _openAccountListWindow ?? (_openAccountListWindow = new DelegateCommand(OnOpenAccountListWindow));
-
-        private void OnOpenAccountListWindow()
-        {
-            var w = _getContainer().Resolve<AccountListWindow>();
-            w.Show(); 
         }
     }
 }
