@@ -1,4 +1,5 @@
-﻿using System;
+﻿using K42un0k0SnsDeck.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace K42un0k0SnsDeck.Views
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenAccountList(object sender, RoutedEventArgs e)
+
+        {
+            var vm = (MainWindowViewModel)this.DataContext;
+            vm.OnOpenAccountListWindow(this);
         }
     }
 }

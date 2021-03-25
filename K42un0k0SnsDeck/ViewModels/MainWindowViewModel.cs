@@ -32,14 +32,15 @@ namespace K42un0k0SnsDeck.ViewModels
             Greeting = Greeting == "こんにちは" ? "こんばんわ" : "こんにちは";
         }
 
-        private DelegateCommand _openAccountListWindow = null;
+        //private DelegateCommand _openAccountListWindow = null;
 
-        public DelegateCommand OpenAccountListWindow => _openAccountListWindow ?? (_openAccountListWindow = new DelegateCommand(OnOpenAccountListWindow));
+        //public DelegateCommand OpenAccountListWindow => _openAccountListWindow ?? (_openAccountListWindow = new DelegateCommand(OnOpenAccountListWindow));
 
-        private void OnOpenAccountListWindow()
+        public void OnOpenAccountListWindow(MainWindow self)
         {
             var w = _getContainer().Resolve<AccountListWindow>();
-            w.Show(); 
+            w.Owner = self;
+            w.ShowDialog(); 
         }
     }
 }

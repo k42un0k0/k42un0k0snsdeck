@@ -7,6 +7,7 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner" 
         Title="AccountListWindow" Height="450" Width="800">
     <Grid>
         <TextBlock><TextBlock Text="{Binding Greeting, FallbackValue='失敗'}"/>アカウント一覧</TextBlock> 
