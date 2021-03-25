@@ -1,0 +1,20 @@
+﻿@startuml ドメインモデル
+
+object Twitterアカウント
+object Twitterタイムライン
+object Twitterリスト
+object Twitterリストのタイムライン
+object Twitter検索
+object Twitterユーザーページ
+object TwitterDM一覧
+object TwitterDM
+object Twitter通知
+object Facebookアカウント
+object Facebookタイムライン
+object Facebookユーザーページ
+object Facebook検索
+object Facebookメッセンジャー
+object Facebook通知
+
+
+@enduml

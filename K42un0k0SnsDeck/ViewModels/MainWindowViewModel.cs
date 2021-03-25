@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using K42un0k0SnsDeck.Views;
 using Prism.Commands;
 using Prism.Ioc;

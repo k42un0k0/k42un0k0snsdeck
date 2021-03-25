@@ -4,6 +4,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <NeutralLanguage>ja-JP</NeutralLanguage>
+    <Company>k42un0k0</Company>
+    <Description>this is my sns deck.</Description>
+    <PackageId>K42un0k0SnsDeck</PackageId>
+    <Authors>k42un0k0.inc</Authors>
+    <Product>K42un0k0SnsDeck</Product>
+    <AssemblyName>K42un0k0SnsDeck</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

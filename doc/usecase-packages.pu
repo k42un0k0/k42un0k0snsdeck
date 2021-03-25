@@ -1,7 +1,9 @@
 @startuml	ユースケースパッケージ
 
 package 一般 {
-	(列で機能を表示する)
+	(列を追加できる)
+	(Twitterのタイムラインを列を追加できる)
+	(Facebookのタイムラインを列を追加できる)
 	(Facebookにログインできる)
 	(複数のTwitterアカウントにログインできる)
 }
@@ -15,7 +17,6 @@ package Twitter {
 	(DMで連絡をとれる)
 	(通知が見れる)
 	(検索できる)
-	(フォローできる)
 }
 
 package Facebook {

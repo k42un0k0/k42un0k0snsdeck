@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_92A0AB751127414DA0E3A52504D8A72F"
+        "MsmKey" = "8:_065CA6DE4E9C45D7879E68309630BA81"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -27,7 +27,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\Setup1.msi"
+        "OutputFilename" = "8:Debug\\K42un0k0SnsDeck.Installer.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -44,6 +44,9 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                }
             }
         }
         "Release"
@@ -163,9 +166,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup1"
+        "ProductName" = "8:K42un0k0SnsDeck"
         "ProductCode" = "8:{66D08056-E290-42C2-9675-38438FC9339C}"
-        "PackageCode" = "8:{43DFB8E8-3B17-465F-9B84-5BA276A45D50}"
+        "PackageCode" = "8:{99F9A0F0-8578-4206-BD87-95A135F7ABA2}"
         "UpgradeCode" = "8:{3F939B4B-B2D6-4AFF-A5D3-C45375642F3F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -173,7 +176,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:k42un0k0"
+        "Manufacturer" = "8:k42un0k0.inc"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Setup1"
@@ -293,7 +296,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_92A0AB751127414DA0E3A52504D8A72F"
+            "Target" = "8:_065CA6DE4E9C45D7879E68309630BA81"
             "Folder" = "8:_F03BE58142854F43A9C778820458ECAF"
             "WorkingFolder" = "8:_AE2810E422B14EB286F8BD7C5E25786D"
             "Icon" = "8:"
@@ -307,7 +310,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_92A0AB751127414DA0E3A52504D8A72F"
+            "Target" = "8:_065CA6DE4E9C45D7879E68309630BA81"
             "Folder" = "8:_4A1544A50E134CF2B6638EEC871C9D95"
             "WorkingFolder" = "8:_AE2810E422B14EB286F8BD7C5E25786D"
             "Icon" = "8:"
@@ -712,9 +715,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_92A0AB751127414DA0E3A52504D8A72F"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_065CA6DE4E9C45D7879E68309630BA81"
             {
-            "SourcePath" = "8:..\\K42un0k0SnsDeck\\obj\\Release\\netcoreapp3.1\\K42un0k0SnsDeck.exe"
+            "SourcePath" = "8:..\\K42un0k0SnsDeck\\obj\\Debug\\netcoreapp3.1\\K42un0k0SnsDeck.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AE2810E422B14EB286F8BD7C5E25786D"
@@ -732,11 +735,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|Any CPU"
+            "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{D4D0FE5E-BF60-4B7A-88BA-1591E7D81399}"
             "ShowKeyOutput" = "11:TRUE"
-            "PublishProfilePath" = "8:Properties\\PublishProfiles\\FolderProfile.pubxml"
                 "ExcludeFilters"
                 {
                 }
