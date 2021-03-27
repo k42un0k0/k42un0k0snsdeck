@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using K42un0k0SnsDeck.Views;
+using Prism.Unity;
+using Prism.Ioc;
+using System.Threading;
+using K42un0k0SnsDeck.Clients;
 
 namespace K42un0k0SnsDeck
 {
-    using Views;
-    using ViewModels;
-    using Prism.Unity;
-    using Prism.Ioc;
-    using System.Threading;
-
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -56,6 +49,7 @@ namespace K42un0k0SnsDeck
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<TwitterClient>();
         }
     }
 }

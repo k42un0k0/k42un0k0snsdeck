@@ -1,0 +1,53 @@
+@startuml 複数のTwitterアカウントにログインできる
+
+!include ../sequence.conf 
+
+actor ユーザー
+
+note left
+### 基本コース
+
+システムは「アカウント一覧」ページを表示する。
+ユーザーは「Twitterアカウントの追加」ボタンをクリックする。
+システムはTwitterのＯＡｕｔｈを表示する。
+ユーザーはログインする。
+システムはリダイレクトURLを取得し、アクセストークンを読み取る。
+システムはアカウント名を保存し、Twitterアカウントを作成。
+システムはアカウント一覧を取得する。
+システムは「アカウント一覧」ページを表示する。
+
+### 代替コース
+
+Twitterへのログインキャンセル：
+OAuthを閉じる。
+アクセストークンの取得を失敗：
+アカウントの登録に失敗しましたを表示
+アカウント名の取得を失敗：
+アカウントの登録に失敗しましたを表示
+
+endnote
+
+boundary "「アカウント一覧」ページ" as AccountListWindow
+boundary "「OAuth on Twitter」ページ" as TwitterOAuthWindow
+control TwitterService
+control TwitterClient
+control TwitterAccountRepository
+control FacebookAccountRepository
+entity TwitterAccount
+
+control "「OAuth on Twitter」ページを閉じる" as closeTwitterOAuthWindow #Grey
+control "「アカウントの登録に失敗しました」を表示" as showOAuthErrorMsg #Grey
+
+ユーザー -> AccountListWindow : 「Twitterアカウントの追加」ボタンをクリック
+AccountListWindow -> TwitterOAuthWindow : Show()
+TwitterOAuthWindow -> TwitterOAuthWindow : redirectUrl = getRedirectUrl
+TwitterOAuthWindow -> TwitterService : configureFromRedirectUrl(redirectUrl)
+TwitterOAuthWindow -> TwitterService : account = createTwitterAccount()
+TwitterService -> TwitterClient : getAccountName()
+TwitterService -> TwitterAccount : new
+TwitterOAuthWindow -> TwitterAccountRepository : save(account)
+TwitterOAuthWindow -> TwitterOAuthWindow : close()
+AccountListWindow -> TwitterAccountRepository : findAll()
+AccountListWindow -> FacebookAccountRepository : findAll()
+
+@enduml
