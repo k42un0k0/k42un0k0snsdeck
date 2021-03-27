@@ -16,5 +16,9 @@ object Facebook検索
 object Facebookメッセンジャー
 object Facebook通知
 
+actor Twitter
+actor Facebook
+
+
 
 @enduml
