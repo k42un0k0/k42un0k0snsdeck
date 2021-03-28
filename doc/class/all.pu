@@ -1,0 +1,55 @@
+@startuml
+
+!include window.pu
+!include provider.pu
+
+class TwitterService{
+    + configureFromRedirectUrl()
+    + createTwitterAccount()
+}
+class TwitterClient{
+    + getAccountName()
+}
+class TwitterAccountRepository{
+    + void add(TwitterAccount account)
+    + List<TwitterAccount> findAll()
+}
+class FacebookAccountRepository{
+    + FacebookAccount findAll()
+}
+class TwitterAccount{
+    + Long id 
+    + string accessToken
+    + string accountName
+}
+class FacebookAccount{
+    + Long id 
+    + string accessToken
+    + string accountName
+}
+
+class TwitterJsonDao{
+    - List<TwitterAccount> data
+    + void add(TwitterAccount account)
+    + List<TwitterAccount> findAll()
+    + void save()
+}
+class FacebookJsonDao{
+    - List<FacebookAccount> data
+    + void add(FacebookAccount account)
+    + List<FacebookAccount> findAll()
+    + void save()
+}
+
+AccountListWindow ..> TwitterAccountRepository
+AccountListWindow ..> FacebookAccountRepository
+TwitterService ..> TwitterClient
+TwitterClient ..> System.Net.Http.HttpClient
+TwitterService ..> TwitterAccount
+TwitterAccountRepository ..> TwitterAccount
+FacebookAccountRepository ..> FacebookAccount
+TwitterAccountRepository ..> TwitterJsonDao
+FacebookAccountRepository ..> FacebookJsonDao
+TwitterJsonDao ..> JsonProvider
+FacebookJsonDao ..> JsonProvider
+@enduml

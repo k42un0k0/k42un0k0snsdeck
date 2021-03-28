@@ -1,0 +1,18 @@
+@startuml window
+
+class Window
+
+class AccountListWindow{
+    - openTwitterOAuthDialog()
+}
+
+class TwitterOAuthWindow{
+    - getRedirectUrl()
+    - showAuthorizationErrorMessage()
+}
+
+Window <|-- AccountListWindow
+Window <|-- TwitterOAuthWindow
+AccountListWindow ..> TwitterOAuthWindow
+
+@enduml

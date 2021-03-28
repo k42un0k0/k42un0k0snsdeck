@@ -1,0 +1,7 @@
+@startuml provider
+class JsonProvider{
+    + string restore(string name)
+    + void store(string name, string json)
+}
+
+@enduml

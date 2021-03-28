@@ -1,24 +1,84 @@
-﻿@startuml ドメインモデル
+@startuml ドメインモデル
 
-object Twitterアカウント
-object Twitterタイムライン
-object Twitterリスト
-object Twitterリストのタイムライン
-object Twitter検索
-object Twitterユーザーページ
-object TwitterDM一覧
-object TwitterDM
-object Twitter通知
-object Facebookアカウント
-object Facebookタイムライン
-object Facebookユーザーページ
-object Facebook検索
-object Facebookメッセンジャー
-object Facebook通知
+object ユーザー
+interface TwitterAction {
+    + Long ownerId
+}
+interface FacebookAction {
+    + Long ownerId
+}
 
-actor Twitter
-actor Facebook
+class TwitterAccount {
+    + Long id
+    + string accessToken
+    + string userName
+    + string iconPath
+}
 
+class TwitterTimeline {
 
+}
+class TwitterList {
+    + listId
+}
+class TwitterListTimeline {
+    + listId
+}
+class TwitterDMList {
+
+}
+class TwitterDM {
+
+}
+class TwitterNotification {
+
+}
+class TwitterSearch {
+    + string searchParam
+}
+class TwitterUserPage {
+    + string userId
+}
+class FacebookAccount {
+    + Long id
+    + string accessToken
+    + string userName
+    + string iconPath
+}
+class FacebookTimeline {
+
+}
+class FacebookUserPage {
+
+}
+class FacebookSearch {
+
+}
+class FacebookMessanger {
+
+}
+class FacebookNotification {
+
+}
+
+ユーザー o-- TwitterAccount
+ユーザー o-- FacebookAccount
+TwitterAccount o-- TwitterAction
+TwitterAction --|> TwitterTimeline
+TwitterAction --|> TwitterList
+TwitterAction --|> TwitterListTimeline
+TwitterList o-- TwitterListTimeline
+TwitterAction --|> TwitterDMList
+TwitterAction --|> TwitterDM
+TwitterDMList o-- TwitterDM
+TwitterAction --|> TwitterNotification
+TwitterAction --|> TwitterSearch
+TwitterAction --|> TwitterUserPage
+FacebookAccount o-- FacebookAction
+FacebookAction --|> FacebookTimeline
+FacebookAction --|> FacebookMessanger
+FacebookAction --|> FacebookNotification
+FacebookAction --|> FacebookSearch
+FacebookAction --|> FacebookUserPage
 
 @enduml

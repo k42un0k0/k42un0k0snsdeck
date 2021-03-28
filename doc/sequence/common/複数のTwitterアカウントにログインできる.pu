@@ -34,20 +34,45 @@ control TwitterClient
 control TwitterAccountRepository
 control FacebookAccountRepository
 entity TwitterAccount
-
-control "「OAuth on Twitter」ページを閉じる" as closeTwitterOAuthWindow #Grey
-control "「アカウントの登録に失敗しました」を表示" as showOAuthErrorMsg #Grey
+entity FacebookAccount
 
 ユーザー -> AccountListWindow : 「Twitterアカウントの追加」ボタンをクリック
 AccountListWindow -> TwitterOAuthWindow : Show()
+activate TwitterOAuthWindow
+alt ログインキャンセル
+ユーザー -> TwitterOAuthWindow : 「閉じる」ボタンを押す
+TwitterOAuthWindow -> TwitterOAuthWindow : Close()
+end
+ユーザー -> TwitterOAuthWindow : ログイン
 TwitterOAuthWindow -> TwitterOAuthWindow : redirectUrl = getRedirectUrl
+alt アクセストークンの取得に失敗
+TwitterOAuthWindow -> TwitterOAuthWindow : showAuthorizationErrorMessage()
+end
 TwitterOAuthWindow -> TwitterService : configureFromRedirectUrl(redirectUrl)
+activate TwitterService
 TwitterOAuthWindow -> TwitterService : account = createTwitterAccount()
 TwitterService -> TwitterClient : getAccountName()
+alt アカウント名の取得に失敗
+TwitterOAuthWindow -> TwitterOAuthWindow : showAuthorizationErrorMessage()
+end
+activate TwitterClient
+deactivate TwitterClient
 TwitterService -> TwitterAccount : new
+activate TwitterAccount
+deactivate TwitterAccount
+deactivate TwitterClient
+deactivate TwitterService
 TwitterOAuthWindow -> TwitterAccountRepository : save(account)
+activate TwitterAccountRepository
 TwitterOAuthWindow -> TwitterOAuthWindow : close()
+deactivate TwitterOAuthWindow
 AccountListWindow -> TwitterAccountRepository : findAll()
+TwitterAccountRepository -> TwitterAccount : create()
 AccountListWindow -> FacebookAccountRepository : findAll()
+FacebookAccountRepository -> FacebookAccount : create()
+activate FacebookAccountRepository
+deactivate FacebookAccountRepository
+deactivate TwitterAccountRepository
+AccountListWindow -> ユーザー : アカウント一覧の表示
 
 @enduml
