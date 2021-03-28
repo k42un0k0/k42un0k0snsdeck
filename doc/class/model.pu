@@ -1,0 +1,17 @@
+@startuml model
+
+package model{
+    class TwitterAccount{
+        + Long id 
+        + string accessToken
+        + string accountName
+    }
+
+    class FacebookAccount{
+        + Long id 
+        + string accessToken
+        + string accountName
+    }
+}
+
+@enduml

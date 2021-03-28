@@ -1,31 +1,27 @@
-@startuml
+@startuml all
 
 !include window.pu
 !include provider.pu
+!include model.pu
 
-class TwitterService{
-    + configureFromRedirectUrl()
-    + createTwitterAccount()
+interface  TwitterAccountFactory{
+    + TwitterAccount createFromRedirectUri(Uri redirectUrl)
 }
+
+class  TwitterAccountFactoryImpl{
+}
+
 class TwitterClient{
+    + configureFromRedirectUrl(Uri redirectUrl)
     + getAccountName()
+    + getIconPath()
 }
-class TwitterAccountRepository{
+interface TwitterAccountRepository{
     + void add(TwitterAccount account)
     + List<TwitterAccount> findAll()
 }
-class FacebookAccountRepository{
+interface FacebookAccountRepository{
     + FacebookAccount findAll()
-}
-class TwitterAccount{
-    + Long id 
-    + string accessToken
-    + string accountName
-}
-class FacebookAccount{
-    + Long id 
-    + string accessToken
-    + string accountName
 }
 
 class TwitterJsonDao{
@@ -43,13 +39,19 @@ class FacebookJsonDao{
 
 AccountListWindow ..> TwitterAccountRepository
 AccountListWindow ..> FacebookAccountRepository
-TwitterService ..> TwitterClient
+TwitterOAuthWindow ..> TwitterAccountFactory
+TwitterAccountFactoryImpl --|> TwitterAccountFactory
+TwitterAccountFactoryImpl ..> TwitterClient
 TwitterClient ..> System.Net.Http.HttpClient
-TwitterService ..> TwitterAccount
+TwitterAccountFactory ..> TwitterAccount
 TwitterAccountRepository ..> TwitterAccount
 FacebookAccountRepository ..> FacebookAccount
-TwitterAccountRepository ..> TwitterJsonDao
-FacebookAccountRepository ..> FacebookJsonDao
+TwitterAccountRepositoryImpl --|> TwitterAccountRepository
+FacebookAccountRepositoryImpl --|> FacebookAccountRepository
+TwitterAccountRepositoryImpl ..> TwitterJsonDao
+FacebookAccountRepositoryImpl ..> FacebookJsonDao
 TwitterJsonDao ..> JsonProvider
 FacebookJsonDao ..> JsonProvider
+TwitterJsonDao ..> TwitterAccount
+FacebookJsonDao ..> FacebookAccount
 @enduml

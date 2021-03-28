@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using K42un0k0SnsDeck.Clients;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using K42un0k0SnsDeck.Infra.HttpClient;
 
 namespace K42un0k0SnsDeck.Clients.Tests
 {

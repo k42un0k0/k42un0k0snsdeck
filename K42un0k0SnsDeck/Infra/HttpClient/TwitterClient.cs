@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace K42un0k0SnsDeck.Clients
+namespace K42un0k0SnsDeck.Infra.HttpClient
 {
-   public class TwitterClient
+    public class TwitterClient
     {
         public string hello()
         {

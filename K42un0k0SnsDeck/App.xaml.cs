@@ -3,7 +3,7 @@ using K42un0k0SnsDeck.Views;
 using Prism.Unity;
 using Prism.Ioc;
 using System.Threading;
-using K42un0k0SnsDeck.Clients;
+using K42un0k0SnsDeck.Infra.HttpClient;
 
 namespace K42un0k0SnsDeck
 {
