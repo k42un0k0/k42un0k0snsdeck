@@ -5,6 +5,6 @@ namespace K42un0k0SnsDeck.DomainServices
 {
     interface TwitterAccountFactory
     {
-        TwitterAccount createFromRedirectUri(Uri redirectUrl);
+        TwitterAccount CreateFromRedirectUri(Uri redirectUrl);
     }
 }

@@ -4,16 +4,18 @@ using System.Text;
 
 namespace K42un0k0SnsDeck.Models
 {
-    class TwitterAccount
+    public class TwitterAccount
     {
-        private long _id;
-        private string _accessToken;
-        private string _accountName;
         public TwitterAccount(long id, string accessToken, string accountName)
         {
-            _id = id;
-            _accessToken = accessToken;
-            _accountName = accountName;
+            Id = id;
+            AccessToken = accessToken;
+            AccountName = accountName;
         }
+
+        public long Id { get; set; }
+        public string AccessToken { get; set; }
+        public string AccountName { get; set; }
+
     }
 }

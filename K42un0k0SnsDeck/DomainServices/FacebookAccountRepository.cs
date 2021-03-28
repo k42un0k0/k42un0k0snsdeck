@@ -5,7 +5,7 @@ namespace K42un0k0SnsDeck.DomainServices
 {
     interface FacebookAccountRepository
     {
-        void add(FacebookAccount account);
-        List<FacebookAccount> findAll();
+        void Add(FacebookAccount account);
+        List<FacebookAccount> FindAll();
     }
 }

@@ -19,4 +19,9 @@
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infra\Dao\" />
+    <Folder Include="Infra\Provider\" />
+  </ItemGroup>
+
 </Project>

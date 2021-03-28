@@ -4,7 +4,7 @@ using System.Text;
 
 namespace K42un0k0SnsDeck.Models
 {
-    class FacebookAccount
+    public class FacebookAccount
     {
         private long _id;
         private string _accessToken;

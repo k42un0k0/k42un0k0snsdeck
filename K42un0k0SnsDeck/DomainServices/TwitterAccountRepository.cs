@@ -5,7 +5,7 @@ namespace K42un0k0SnsDeck.DomainServices
 {
     interface TwitterAccountRepository
     {
-        void add(TwitterAccount account);
-        List<TwitterAccount> findAll();
+        void Add(TwitterAccount account);
+        List<TwitterAccount> FindAll();
     }
 }

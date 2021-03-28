@@ -1,14 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace K42un0k0SnsDeck.Infra.HttpClient
 {
-    public class TwitterClient
+    public interface ITwitterClient
     {
-        public string hello()
+        void ConfigureFromRedirectUrl(System.Uri redirectUrl);
+        string GetAccountName();
+        string GetIconPath();
+    }
+
+    public class TwitterClient : ITwitterClient
+    {
+
+        public void ConfigureFromRedirectUrl(System.Uri redirectUrl)
         {
-            return "hello";
+            throw new System.NotImplementedException();
+        }
+
+        public string GetAccountName()
+        {
+            throw new System.NotImplementedException();
+        }
+        public string GetIconPath()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

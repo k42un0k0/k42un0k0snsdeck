@@ -4,11 +4,11 @@
 !include provider.pu
 !include model.pu
 
-interface  TwitterAccountFactory{
+interface  ITwitterAccountFactory{
     + TwitterAccount createFromRedirectUri(Uri redirectUrl)
 }
 
-class  TwitterAccountFactoryImpl{
+class  TwitterAccountFactory{
 }
 
 class TwitterClient{
@@ -16,11 +16,11 @@ class TwitterClient{
     + getAccountName()
     + getIconPath()
 }
-interface TwitterAccountRepository{
+interface ITwitterAccountRepository{
     + void add(TwitterAccount account)
     + List<TwitterAccount> findAll()
 }
-interface FacebookAccountRepository{
+interface IFacebookAccountRepository{
     + FacebookAccount findAll()
 }
 
@@ -37,19 +37,19 @@ class FacebookJsonDao{
     + void save()
 }
 
-AccountListWindow ..> TwitterAccountRepository
-AccountListWindow ..> FacebookAccountRepository
-TwitterOAuthWindow ..> TwitterAccountFactory
-TwitterAccountFactoryImpl --|> TwitterAccountFactory
-TwitterAccountFactoryImpl ..> TwitterClient
+AccountListWindow ..> ITwitterAccountRepository
+AccountListWindow ..> IFacebookAccountRepository
+TwitterOAuthWindow ..> ITwitterAccountFactory
+TwitterAccountFactory --|> ITwitterAccountFactory
+TwitterAccountFactory ..> TwitterClient
 TwitterClient ..> System.Net.Http.HttpClient
-TwitterAccountFactory ..> TwitterAccount
-TwitterAccountRepository ..> TwitterAccount
-FacebookAccountRepository ..> FacebookAccount
-TwitterAccountRepositoryImpl --|> TwitterAccountRepository
-FacebookAccountRepositoryImpl --|> FacebookAccountRepository
-TwitterAccountRepositoryImpl ..> TwitterJsonDao
-FacebookAccountRepositoryImpl ..> FacebookJsonDao
+ITwitterAccountFactory ..> TwitterAccount
+ITwitterAccountRepository ..> TwitterAccount
+IFacebookAccountRepository ..> FacebookAccount
+TwitterAccountRepository --|> ITwitterAccountRepository
+FacebookAccountRepository --|> IFacebookAccountRepository
+TwitterAccountRepository ..> TwitterJsonDao
+FacebookAccountRepository ..> FacebookJsonDao
 TwitterJsonDao ..> JsonProvider
 FacebookJsonDao ..> JsonProvider
 TwitterJsonDao ..> TwitterAccount
