@@ -7,6 +7,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices
 {
     public class TwitterAccountFactoryImpl : TwitterAccountFactory
     {
+        private readonly string ACCESS_TOKEN_KEY = "access_token";
         private readonly Func<ITwitterClient> _getTwitterClient;
         public TwitterAccountFactoryImpl(Func<ITwitterClient> getTwitterClient)
         {
@@ -16,8 +17,9 @@ namespace K42un0k0SnsDeck.Infra.DomainServices
         {
             var client = _getTwitterClient();
             var accountName = client.GetAccountName();
-            var accessToken = redirectUrl.ToString();
-            return new TwitterAccount(0, accessToken, accountName);
+            var sQuery = redirectUrl.Query;
+            var query = System.Web.HttpUtility.ParseQueryString(sQuery);
+            return new TwitterAccount(0,query.Get(ACCESS_TOKEN_KEY), accountName);
         }
     }
 }
