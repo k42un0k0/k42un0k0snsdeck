@@ -20,7 +20,14 @@ namespace K42un0k0SnsDeck.Infra.Provider
         public JsonProvider(string path)
         {
             _path = path;
-            ReadFile();
+            try
+            {
+                ReadFile();
+            }catch (FileNotFoundException)
+            {
+                File.WriteAllText(_path, "{}");
+                ReadFile();
+            }
         }
 
         private void ReadFile()

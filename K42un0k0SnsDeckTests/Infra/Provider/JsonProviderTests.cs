@@ -14,8 +14,21 @@ namespace K42un0k0SnsDeck.Infra.Provider.Tests
             using var file = new TemporaryFile();
             File.WriteAllText(file, "{}");
 
-            var jsonProvider = new JsonProvider(file);
+            new JsonProvider(file);
         }
+
+        [Fact()]
+        public void JsonProviderTestWithoutFile()
+        {
+            var path = Path.GetTempPath();
+            var notExistFile = path + "/hello.txt";
+            File.Delete(notExistFile);
+            Assert.False(File.Exists(notExistFile));
+            new JsonProvider(notExistFile);
+            Assert.True(File.Exists(notExistFile));
+            File.Delete(notExistFile);
+        }
+
 
         public class Sample
         {
