@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K42un0k0SnsDeck", "K42un0k0
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "K42un0k0SnsDeck.Installer", "K42un0k0SnsDeck.Installer\K42un0k0SnsDeck.Installer.vdproj", "{86BB1DD5-4557-43CD-A9F3-BC7331C6AB03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K42un0k0SnsDeckTests", "K42un0k0SnsDeckTests\K42un0k0SnsDeckTests.csproj", "{A7378388-3EF6-4501-BA3C-0D79EB5F43FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K42un0k0SnsDeckTests", "K42un0k0SnsDeckTests\K42un0k0SnsDeckTests.csproj", "{A7378388-3EF6-4501-BA3C-0D79EB5F43FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

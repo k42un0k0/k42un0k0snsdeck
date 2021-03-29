@@ -28,13 +28,11 @@ class TwitterJsonDao{
     - List<TwitterAccount> data
     + void add(TwitterAccount account)
     + List<TwitterAccount> findAll()
-    + void save()
 }
 class FacebookJsonDao{
     - List<FacebookAccount> data
     + void add(FacebookAccount account)
     + List<FacebookAccount> findAll()
-    + void save()
 }
 
 AccountListWindow ..> ITwitterAccountRepository
