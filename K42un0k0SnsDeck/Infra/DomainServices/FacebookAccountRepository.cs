@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices
 {
-    public class FacebookAccountRepositoryImpl : FacebookAccountRepository
+    public class FacebookAccountRepository : IFacebookAccountRepository
     {
         public void Add(FacebookAccount account)
         {

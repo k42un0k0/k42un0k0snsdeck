@@ -3,7 +3,7 @@ using System;
 
 namespace K42un0k0SnsDeck.DomainServices
 {
-    interface TwitterAccountFactory
+    interface ITwitterAccountFactory
     {
         TwitterAccount CreateFromRedirectUri(Uri redirectUrl);
     }

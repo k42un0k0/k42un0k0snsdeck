@@ -1,14 +1,13 @@
 ﻿using Xunit;
 using K42un0k0SnsDeck.Infra.HttpClient;
 using Moq;
-using K42un0k0SnsDeck.Models;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
 {
-    public class TwitterAccountFactoryImplTests
+    public class TwitterAccountFactoryTests
     {
 
-        public TwitterAccountFactoryImplTests()
+        public TwitterAccountFactoryTests()
         {
         }
 
@@ -25,7 +24,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
                 .Returns("hello");
             mockClient.Setup(client => client.ConfigureFromRedirectUrl(uri));
 
-            var obj = new TwitterAccountFactoryImpl(() => mockClient.Object);
+            var obj = new TwitterAccountFactory(() => mockClient.Object);
             var account = obj.CreateFromRedirectUri(uri);
 
             mockClient.Verify((client) => client.ConfigureFromRedirectUrl(uri), Times.AtMostOnce());
