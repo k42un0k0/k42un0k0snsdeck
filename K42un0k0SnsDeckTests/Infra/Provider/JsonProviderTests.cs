@@ -59,7 +59,7 @@ namespace K42un0k0SnsDeck.Infra.Provider.Tests
         }
 
         [Fact()]
-        public async void StoreTest()
+        public void StoreTest()
         {
             using var file = new TemporaryFile();
             File.WriteAllText(file, "{}");
