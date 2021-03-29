@@ -31,7 +31,7 @@ namespace K42un0k0SnsDeck.Common
         public void Enqueue(ThreadStart task)
         {
             _taskQueue.Enqueue(task);
-            if (_process.IsCompleted) _process = RunProcess();
+            if (_process == null || _process.IsCompleted) _process = RunProcess();
         }
     }
 }
