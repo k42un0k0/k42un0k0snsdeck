@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices
 {
-    public class TwitterAccountRepository : ITwitterAccountRepository
+    public class TwitterAccountRepository : K42un0k0SnsDeck.DomainServices.ITwitterAccountRepository
     {
-        private readonly Func<TwitterAccountDao> _getTwitterAccountDao;
-        public TwitterAccountRepository(Func<TwitterAccountDao> getTwitterAccountDao)
+        private readonly Func<ITwitterAccountDao> _getTwitterAccountDao;
+        public TwitterAccountRepository(Func<ITwitterAccountDao> getTwitterAccountDao)
         {
             _getTwitterAccountDao = getTwitterAccountDao;
         }

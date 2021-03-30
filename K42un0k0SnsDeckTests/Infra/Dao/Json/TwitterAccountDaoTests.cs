@@ -27,6 +27,8 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
                 new TwitterAccountDto(1, "", "")
             };
 
+            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore<List<TwitterAccountDto>>(It.IsAny<string>())).Returns(list);
+
             var dao = new TwitterAccountDao(() => mockJsonProvider.Object);
 
             dao.Add(newAccount);
