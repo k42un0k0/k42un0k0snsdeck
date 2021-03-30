@@ -8,6 +8,12 @@
         WindowStartupLocation="CenterOwner" 
         Title="AccountListWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock><TextBlock Text="{Binding Greeting, FallbackValue='失敗'}"/>アカウント一覧</TextBlock> 
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0">アカウント一覧</TextBlock>
+
+        <Button Grid.Row="1" Click="Button_Click">押せ</Button>
     </Grid>
 </Window>

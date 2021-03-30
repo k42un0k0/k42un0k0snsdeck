@@ -21,5 +21,10 @@ namespace K42un0k0SnsDeck.Views
         {
             InitializeComponent();
         }
+
+        private void WebView_Loaded(object sender, RoutedEventArgs e)
+        {
+            webView.Navigate("https://www.google.com");
+        }
     }
 }
