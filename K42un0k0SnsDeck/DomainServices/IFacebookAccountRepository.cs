@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace K42un0k0SnsDeck.DomainServices
 {
-    interface IFacebookAccountRepository
+    public interface IFacebookAccountRepository
     {
         void Add(FacebookAccount account);
         List<FacebookAccount> FindAll();
