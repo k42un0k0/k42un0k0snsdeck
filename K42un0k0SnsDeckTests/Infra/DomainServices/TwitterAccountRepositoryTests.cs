@@ -1,11 +1,8 @@
 ﻿using Xunit;
-using System;
 using Moq;
 using K42un0k0SnsDeck.Infra.Dao.Json;
-using K42un0k0SnsDeck.DomainServices;
 using K42un0k0SnsDeck.Models;
 using System.Collections.Generic;
-using System.Linq;
 using K42un0k0SnsDeck.Infra.Dto.Json;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
@@ -42,9 +39,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
             var index = 0;
             actual.ForEach((item) =>
             {
-                Assert.Equal(list[index].Id, item.Id);
-                Assert.Equal(list[index].AccessToken, item.AccessToken);
-                Assert.Equal(list[index].AccountName, item.AccountName);
+                Assert.Equal<TwitterAccount>(list[index], item);
                 index++;
             });
         }
