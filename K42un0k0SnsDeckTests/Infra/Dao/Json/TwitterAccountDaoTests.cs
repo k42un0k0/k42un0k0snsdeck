@@ -12,11 +12,6 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
 {
     public class TwitterAccountDaoTests
     {
-        private readonly Mock<IJsonProvider> mockJsonProvider = new Mock<IJsonProvider>();
-        private readonly TwitterAccountDao dao;
-        public TwitterAccountDaoTests()
-        {
-        }
         [Fact()]
         public void AddTest()
         {

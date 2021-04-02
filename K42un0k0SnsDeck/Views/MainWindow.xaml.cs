@@ -1,18 +1,7 @@
-﻿using K42un0k0SnsDeck.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using K42un0k0SnsDeck.Infra.Http;
+using K42un0k0SnsDeck.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Unity;
 
 namespace K42un0k0SnsDeck.Views
 {
@@ -26,9 +15,13 @@ namespace K42un0k0SnsDeck.Views
             InitializeComponent();
         }
 
+        [Dependency]
+        public TwitterClient TwitterClient { get; set; }
+
         private void OpenAccountList(object sender, RoutedEventArgs e)
 
         {
+            TwitterClient.RequestAuthorizationUrl();
             var vm = (MainWindowViewModel)this.DataContext;
             vm.OnOpenAccountListWindow(this);
         }

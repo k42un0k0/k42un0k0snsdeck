@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="TwitterAccessToken" value="0" />
+		<add key="TwitterAccessTokenSecret" value="0" />
+		<add key="TwitterApiKey" value="0" />
+		<add key="TwitterApiSecretKey" value="0" />
+		<add key="TwitterCallbackUrl" value="https://localhost:8000" />
+	</appSettings>
+</configuration>

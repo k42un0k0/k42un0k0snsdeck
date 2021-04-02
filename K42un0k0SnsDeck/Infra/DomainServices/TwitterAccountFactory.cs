@@ -1,5 +1,5 @@
 ﻿using K42un0k0SnsDeck.DomainServices;
-using K42un0k0SnsDeck.Infra.HttpClient;
+using K42un0k0SnsDeck.Infra.Http;
 using K42un0k0SnsDeck.Models;
 using System;
 

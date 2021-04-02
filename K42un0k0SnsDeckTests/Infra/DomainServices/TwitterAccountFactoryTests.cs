@@ -1,6 +1,9 @@
 ﻿using Xunit;
-using K42un0k0SnsDeck.Infra.HttpClient;
+using K42un0k0SnsDeck.Infra.Http;
 using Moq;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
 {
@@ -18,7 +21,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
             var expectAccessToken = "asdf1230jkl";
             var expectAccountName = "hello";
 
-            var uri = new System.Uri("https://google.com?access_token="+ expectAccessToken);
+            var uri = new System.Uri("https://google.com?access_token=" + expectAccessToken);
             var mockClient = new Mock<ITwitterClient>();
             mockClient.Setup(client => client.GetAccountName())
                 .Returns("hello");
@@ -31,7 +34,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
             mockClient.Verify((client) => client.GetAccountName(), Times.AtMostOnce());
 
             Assert.Equal(expectId, account.Id);
-            Assert.Equal(expectAccessToken,account.AccessToken);
+            Assert.Equal(expectAccessToken, account.AccessToken);
             Assert.Equal(expectAccountName, account.AccountName);
 
         }
