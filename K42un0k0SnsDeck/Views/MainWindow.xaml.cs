@@ -1,7 +1,5 @@
-﻿using K42un0k0SnsDeck.Infra.Common;
-using K42un0k0SnsDeck.ViewModels;
+﻿using K42un0k0SnsDeck.ViewModels;
 using System.Windows;
-using Unity;
 
 namespace K42un0k0SnsDeck.Views
 {
