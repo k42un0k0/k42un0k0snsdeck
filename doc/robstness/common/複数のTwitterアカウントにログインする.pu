@@ -1,4 +1,4 @@
-﻿@startuml 複数のTwitterアカウントにログインできる
+﻿@startuml 複数のTwitterアカウントにログインする
 
 !include ../robustness.conf 
 

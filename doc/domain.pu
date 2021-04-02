@@ -14,7 +14,7 @@ class TwitterAccount {
     + string iconPath
 }
 
-class TwitterAccountCreadential{
+class TwitterAccountCreadentials{
     + string accessToken
     + string accessTokenSecret
 }
@@ -45,9 +45,13 @@ class TwitterUserPage {
 }
 class FacebookAccount {
     + Long id
-    + string accessToken
     + string userName
     + string iconPath
+}
+
+class FacebookAccountCreadentials{
+    + string accessToken
+    + string accessTokenSecret
 }
 class FacebookTimeline {
 
@@ -68,7 +72,7 @@ class FacebookNotification {
 ユーザー o-- TwitterAccount
 ユーザー o-- FacebookAccount
 TwitterAccount o-- TwitterAction
-TwitterAccount o-- TwitterAccountCreadential
+TwitterAccount o-- TwitterAccountCreadentials
 TwitterAction --|> TwitterTimeline
 TwitterAction --|> TwitterList
 TwitterAction --|> TwitterListTimeline
@@ -80,6 +84,7 @@ TwitterAction --|> TwitterNotification
 TwitterAction --|> TwitterSearch
 TwitterAction --|> TwitterUserPage
 FacebookAccount o-- FacebookAction
+FacebookAccount o-- FacebookAccountCreadentials
 FacebookAction --|> FacebookTimeline
 FacebookAction --|> FacebookMessanger
 FacebookAction --|> FacebookNotification

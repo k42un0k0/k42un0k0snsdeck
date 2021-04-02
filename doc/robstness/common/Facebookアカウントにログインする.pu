@@ -1,0 +1,63 @@
+﻿@startuml Facebookアカウントにログインする
+
+!include ../robustness.conf 
+
+actor ユーザー
+
+note left
+
+### 基本コース
+
+システムは「アカウント一覧」ページを表示する。
+ユーザーは「Facebookアカウントの追加」ボタンをクリックする。
+システムはFacebookアカウントが登録済みかチェックし、FacebookのＯＡｕｔｈを表示する。
+ユーザーはログインする。
+Facebookはリダイレクトする。
+システムはリダイレクトURLを読み取り、認証情報を取得する。
+システムは認証情報とアカウント名からFacebookアカウントを作成、保存し、アカウント一覧を取得する。
+システムは「アカウント一覧」ページを表示する。
+
+### 代替コース
+
+Facebookへのログインキャンセル：
+OAuthを閉じる。
+アクセストークンの取得を失敗：
+アカウントの登録に失敗しましたを表示
+すでにアカウントが１つ登録済みの場合：
+「登録可能なアカウントは１つのみです」を表示する
+
+endnote
+
+boundary "「アカウント一覧」ページ" as accountListPage
+boundary "「OAuth on Facebook」ページ" as facebookOAuthPage
+control FacebookのOAuthを起動する
+control リダイレクトURLを取得
+control アクセストークンを読み取る
+control アカウント名を取得
+control Facebookアカウントの作成
+control すべてのアカウントを取得
+entity Facebookアカウント
+entity Facebookアカウント
+
+control "「OAuth on Facebook」ページを閉じる" as closeacebookOAuthPage #Grey
+control "「アカウントの登録に失敗しました」を表示" as showOAuthErrorMsg #Grey
+
+ユーザー --> accountListPage
+accountListPage --> FacebookのOAuthを起動する : 「Facebookアカウントの追加」ボタンをクリックする
+FacebookのOAuthを起動する --> acebookOAuthPage
+acebookOAuthPage --> closeacebookOAuthPage : ログインをキャンセルする
+closeacebookOAuthPage --> accountListPage
+acebookOAuthPage --> リダイレクトURLを取得 : ログインする
+リダイレクトURLを取得 --> アクセストークンを読み取る
+アクセストークンを読み取る --> アカウント名を取得
+アクセストークンを読み取る --> showOAuthErrorMsg : 失敗
+アカウント名を取得 --> Facebookアカウントの作成
+アカウント名を取得 --> showOAuthErrorMsg : 失敗
+showOAuthErrorMsg --> accountListPage
+Facebookアカウントの作成 -- Facebookアカウント
+Facebookアカウントの作成 --> すべてのアカウントを取得
+すべてのアカウントを取得 -- Facebookアカウント
+すべてのアカウントを取得 -- Facebookアカウント
+すべてのアカウントを取得 --> accountListPage
+
+@enduml

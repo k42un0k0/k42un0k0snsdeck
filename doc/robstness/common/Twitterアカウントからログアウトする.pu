@@ -1,0 +1,38 @@
+﻿@startuml Twitterアカウントからログアウトする
+
+!include ../robustness.conf 
+
+actor ユーザー
+
+note left
+### 基本コース
+
+システムは「アカウント一覧」ページを表示する。
+ユーザーは「Twitterアカウントの削除」ボタンをクリックする。
+システムは「本当に削除してよろしいですか？」ダイアログを表示し、Twitterアカウントを削除する。
+
+### 代替コース
+
+指定されたアカウントがない場合：
+何もしない
+endnote
+
+boundary "「アカウント一覧」ページ" as accountListPage
+boundary "「本当に削除してよろしいですか？」ダイアログ" as deleteConfirmDialog
+control "「本当に削除してよろしいですか？」ダイアログを表示" as showDeleteConfirmDialog
+control Twitterアカウントを削除
+entity Twitterアカウント
+
+control ダイアログを閉じる
+
+ユーザー --> accountListPage
+accountListPage --> showDeleteConfirmDialog : 「Twitterアカウントの削除」ボタンをクリックする
+showDeleteConfirmDialog --> deleteConfirmDialog
+deleteConfirmDialog --> Twitterアカウントを削除 : はい
+deleteConfirmDialog --> ダイアログを閉じる : いいえ
+ダイアログを閉じる --> accountListPage
+Twitterアカウントを削除 -- Twitterアカウント
+Twitterアカウントを削除 --> ダイアログを閉じる
+ダイアログを閉じる --> accountListPage
+
+@enduml
