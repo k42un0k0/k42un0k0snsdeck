@@ -15,6 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls.WebView" Version="6.1.2" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.774.44" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Prism.Core" Version="8.0.0.1909" />
 		<PackageReference Include="Prism.Unity" Version="8.0.0.1909" />

@@ -1,4 +1,5 @@
-﻿using K42un0k0SnsDeck.Usecases;
+﻿using K42un0k0SnsDeck.Constants;
+using K42un0k0SnsDeck.Usecases;
 using K42un0k0SnsDeck.Views.Helper;
 using System;
 using System.Collections.Generic;
@@ -43,8 +44,17 @@ namespace K42un0k0SnsDeck.Views
         {
             try
             {
-                var oauthUrl = OAuthHelper.OAuthUrl();
-                webView.Navigate(oauthUrl);
+                var oauthUrl = OAuthHelper.GetOAuthUrl();
+                webView.Source = new Uri(oauthUrl);
+                webView.NavigationStarting += (s, e) =>
+                {
+                    System.Diagnostics.Debug.Print(e.Uri);
+                    if (e.Uri.StartsWith(AppConfig.Singleton.TwitterCallbackUrl))
+                    {
+                        var command = OAuthHelper.FetchUsecaseCommandFromRedirectUrl(new Uri(e.Uri));
+                        Usecase.exec(command);
+                    }
+                };
             }
             catch (AggregateException err)
             {

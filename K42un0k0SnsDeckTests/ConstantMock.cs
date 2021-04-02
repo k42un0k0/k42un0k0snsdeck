@@ -1,12 +1,14 @@
 ﻿using K42un0k0SnsDeck.Constants;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Moq.Protected;
+using System.Net;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace K42un0k0SnsDeckTests
 {
-    public static class ConstantMock
+    public static class MockUtil
     {
         public static Mock<AppConfig> mockAppConfig()
         {
@@ -16,6 +18,26 @@ namespace K42un0k0SnsDeckTests
             mockAppConfig.SetupGet((appConfig) => appConfig.TwitterApiSecretKey).Returns("KwSTYBjLA9TksqF0pgozHvvJToXoJLkEDV3HgYMcG5v1JnHIul");
             mockAppConfig.SetupGet((appConfig) => appConfig.TwitterCallbackUrl).Returns("https://localhost:8000");
             return mockAppConfig;
+        }
+
+        public static HttpClient mockResponseText(string responseText)
+        {
+            var handlerMock = new Mock<HttpMessageHandler>();
+            var response = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(responseText),
+            };
+
+            handlerMock
+               .Protected()
+               .Setup<Task<HttpResponseMessage>>(
+                  "SendAsync",
+                  ItExpr.IsAny<HttpRequestMessage>(),
+                  ItExpr.IsAny<CancellationToken>())
+               .ReturnsAsync(response);
+            return new HttpClient(handlerMock.Object);
+
         }
     }
 }
