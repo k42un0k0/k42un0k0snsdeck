@@ -1,8 +1,12 @@
 ﻿using Xunit;
-using K42un0k0SnsDeck.Views.Helper;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Moq;
+using System.Net.Http;
+using System.Net;
+using System.Threading.Tasks;
+using Moq.Protected;
+using System.Threading;
+using K42un0k0SnsDeckTests;
 
 namespace K42un0k0SnsDeck.Views.Helper.Tests
 {
@@ -11,13 +15,51 @@ namespace K42un0k0SnsDeck.Views.Helper.Tests
         [Fact()]
         public void OAuthUrlTest()
         {
-            throw new NotImplementedException();
+            ConstantMock.mockAppConfig();
+            var handlerMock = new Mock<HttpMessageHandler>();
+            var response = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(@"oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik&oauth_token_secret=Kd75W4OQfb2oJTV0vzGzeXftVAwgMnEK9MumzYcM&oauth_callback_confirmed=true"),
+            };
+
+            handlerMock
+               .Protected()
+               .Setup<Task<HttpResponseMessage>>(
+                  "SendAsync",
+                  ItExpr.IsAny<HttpRequestMessage>(),
+                  ItExpr.IsAny<CancellationToken>())
+               .ReturnsAsync(response);
+            var httpClient = new HttpClient(handlerMock.Object);
+            var twitterOAuthHelper = new TwitterOAuthHelper();
+            twitterOAuthHelper.client = httpClient;
+
+            Assert.Equal("https://api.twitter.com/oauth/authorize?oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik", twitterOAuthHelper.OAuthUrl());
         }
 
         [Fact()]
-        public void FetchOAuthCredentialsCommandFromRedirectUrlTest()
+        public void FetchUsecaseCommandFromRedirectUrlTest()
         {
-            throw new NotImplementedException();
+            var handlerMock = new Mock<HttpMessageHandler>();
+            var response = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(@"oauth_token=6253282-eWudHldSbIaelX7swmsiHImEL4KinwaGloHANdrY&oauth_token_secret=2EEfA6BG5ly3sR3XjE0IBSnlQu4ZrUzPiYTmrkVU&user_id=6253282&screen_name=twitterapi"),
+            };
+
+            handlerMock
+               .Protected()
+               .Setup<Task<HttpResponseMessage>>(
+                  "SendAsync",
+                  ItExpr.IsAny<HttpRequestMessage>(),
+                  ItExpr.IsAny<CancellationToken>())
+               .ReturnsAsync(response);
+            var twitterOAuthHelper = new TwitterOAuthHelper();
+            var redirectUrl = "https://yourCallbackUrl.com?oauth_token=NPcudxy0yU5T3tBzho7iCotZ3cnetKwcTIRlX0iwRl0&oauth_verifier=uw7NjWHT6OJ1MpJOXsHfNxoAhPKpgI8BlYDhxEjIBY";
+            var command = twitterOAuthHelper.FetchUsecaseCommandFromRedirectUrl(redirectUrl);
+
+            Assert.Equal("6253282-eWudHldSbIaelX7swmsiHImEL4KinwaGloHANdrY", command.AccessToken);
+            Assert.Equal("2EEfA6BG5ly3sR3XjE0IBSnlQu4ZrUzPiYTmrkVU", command.AccessTokenSecret);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using K42un0k0SnsDeck.Usecases;
+using K42un0k0SnsDeck.Views.Helper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,12 +22,41 @@ namespace K42un0k0SnsDeck.Views
         public OAuthWindow()
         {
             InitializeComponent();
+            Loaded += (_1, _2) => CheckDependencies();
         }
 
+        private IOAuthHelper OAuthHelper { get; set; }
+        private ICreateAccountWhenOAuthUsecase Usecase { get; set; }
+
+        public void SetDependencies(IOAuthHelper helper, ICreateAccountWhenOAuthUsecase usecase)
+        {
+            OAuthHelper = helper;
+            Usecase = usecase;
+        }
+
+        private void CheckDependencies()
+        {
+            if (OAuthHelper == null || Usecase == null) throw new NullReferenceException("oauth helper か usecase がありません, SetDependenciesを実行してください");
+        }
 
         private void WebView_Loaded(object sender, RoutedEventArgs e)
         {
-            webView.Navigate("https://www.google.com");
+            try
+            {
+                var oauthUrl = OAuthHelper.OAuthUrl();
+                webView.Navigate(oauthUrl);
+            }
+            catch (AggregateException err)
+            {
+                var errorMessages = "";
+                foreach (var errInner in err.InnerExceptions)
+                {
+                    errorMessages += errInner.Message + "\n";
+                }
+
+                MessageBox.Show(errorMessages, "エラー");
+                Close();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using K42un0k0SnsDeck.Usecases;
+using System.Threading.Tasks;
 
 namespace K42un0k0SnsDeck.Views.Helper
 {
@@ -7,6 +8,6 @@ namespace K42un0k0SnsDeck.Views.Helper
     {
         public string OAuthUrl();
 
-        public CreateAcountWhenOAuthCommand FetchOAuthCredentialsCommandFromRedirectUrl(string redirectUrl);
+        public CreateAcountWhenOAuthCommand FetchUsecaseCommandFromRedirectUrl(string redirectUrl);
     }
 }
