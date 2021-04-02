@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Text;
+﻿using System.Configuration;
 
-namespace K42un0k0SnsDeck.Common
+namespace K42un0k0SnsDeck.Constants
 {
     public class AppConfig
     {

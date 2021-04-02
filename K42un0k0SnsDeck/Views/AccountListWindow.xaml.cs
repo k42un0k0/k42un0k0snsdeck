@@ -30,7 +30,7 @@ namespace K42un0k0SnsDeck.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<TwitterOAuthWindow>();
+            var window = Container.Resolve<OAuthWindow>();
             window.Show();
 
         }

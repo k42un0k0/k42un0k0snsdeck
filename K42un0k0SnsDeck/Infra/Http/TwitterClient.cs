@@ -1,46 +1,22 @@
-﻿using K42un0k0SnsDeck.Common;
-using K42un0k0SnsDeck.Infra.Http.Common;
+﻿using K42un0k0SnsDeck.DomainModels.TwitterAccount;
 using System;
-using System.Net;
-using Unity;
-using Windows.Web.Http;
 
-namespace K42un0k0SnsDeck.Infra.Http
+namespace K42un0k0SnsDeck.Infra.Common
 {
     public interface ITwitterClient
     {
-        void ConfigureFromRedirectUrl(Uri redirectUrl);
-        string GetAccountName();
-        string GetIconPath();
+        public string GetAccountName();
     }
 
-    public class TwitterClient : ITwitterClient
+    public class TwitterClient: ITwitterClient
     {
-        [Dependency]
-        public HttpClient client { get; set; }
-
-        public string RequestAuthorizationUrl()
+        private TwitterAccountCredentials Creadentials { get; set; }
+        public TwitterClient(TwitterAccountCredentials credentials)
         {
-            var oauth = new OAuthValues(TwitterUrl.REQUEST_TOKEN, WebRequestMethods.Http.Post);
-            oauth.SetAcessTokenAndSecret("", "");
-            oauth.AddParameter("oauth_callback", AppConfig.Singleton.TwitterCallbackUrl);
-
-            System.Diagnostics.Debug.Print(oauth.Header);
-            var oauth_token = "";
-            return $"https://api.twitter.com/oauth/authorize?oauth_token={oauth_token}";
-
-        }
-
-        public void ConfigureFromRedirectUrl(Uri redirectUrl)
-        {
-            throw new NotImplementedException();
+            Creadentials = credentials;
         }
 
         public string GetAccountName()
-        {
-            throw new NotImplementedException();
-        }
-        public string GetIconPath()
         {
             throw new NotImplementedException();
         }

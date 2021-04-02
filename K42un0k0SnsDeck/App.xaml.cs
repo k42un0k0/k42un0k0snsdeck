@@ -3,7 +3,7 @@ using K42un0k0SnsDeck.Views;
 using Prism.Unity;
 using Prism.Ioc;
 using System.Threading;
-using K42un0k0SnsDeck.Infra.Http;
+using K42un0k0SnsDeck.Views.Helper;
 
 namespace K42un0k0SnsDeck
 {
@@ -49,7 +49,7 @@ namespace K42un0k0SnsDeck
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<TwitterClient>();
+            containerRegistry.RegisterSingleton<TwitterOAuthHelper>();
         }
     }
 }

@@ -1,27 +1,27 @@
-# ˆê”Ê
+# ä¸€èˆ¬
 
-## •¡”‚ÌTwitterƒAƒJƒEƒ“ƒg‚ÉƒƒOƒCƒ“‚Å‚«‚é
+## è¤‡æ•°ã®Twitterã‚¢ã‚«ã‚¦ãƒ³ãƒˆã«ãƒ­ã‚°ã‚¤ãƒ³ã§ãã‚‹
 
-### Šî–{ƒR[ƒX
+### åŸºæœ¬ã‚³ãƒ¼ã‚¹
 
-ƒVƒXƒeƒ€‚ÍuƒAƒJƒEƒ“ƒgˆê——vƒy[ƒW‚ð•\Ž¦‚·‚éB
-ƒ†[ƒU[‚ÍuTwitterƒAƒJƒEƒ“ƒg‚Ì’Ç‰Ávƒ{ƒ^ƒ“‚ðƒNƒŠƒbƒN‚·‚éB
-ƒVƒXƒeƒ€‚ÍTwitter‚Ì‚n‚`‚•‚”‚ˆ‚ð•\Ž¦‚·‚éB
-ƒ†[ƒU[‚ÍƒƒOƒCƒ“‚·‚éB
-Twitter‚ÍƒŠƒ_ƒCƒŒƒNƒg‚·‚éB
-ƒVƒXƒeƒ€‚ÍƒŠƒ_ƒCƒŒƒNƒgURL‚ð“Ç‚ÝŽæ‚èAƒAƒNƒZƒXƒg[ƒNƒ“‚ðŽæ“¾‚·‚éB
-ƒVƒXƒeƒ€‚ÍƒAƒNƒZƒXƒg[ƒNƒ“‚ÆƒAƒJƒEƒ“ƒg–¼‚ð•Û‘¶‚µAƒAƒJƒEƒ“ƒgˆê——‚ðŽæ“¾‚·‚éB
-ƒVƒXƒeƒ€‚ÍuƒAƒJƒEƒ“ƒgˆê——vƒy[ƒW‚ð•\Ž¦‚·‚éB
+ã‚·ã‚¹ãƒ†ãƒ ã¯ã€Œã‚¢ã‚«ã‚¦ãƒ³ãƒˆä¸€è¦§ã€ãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
+ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¯ã€ŒTwitterã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®è¿½åŠ ã€ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã€‚
+ã‚·ã‚¹ãƒ†ãƒ ã¯Twitterã®ï¼¯ï¼¡ï½•ï½”ï½ˆã‚’è¡¨ç¤ºã™ã‚‹ã€‚
+ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¯ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ã€‚
+Twitterã¯ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã™ã‚‹ã€‚
+ã‚·ã‚¹ãƒ†ãƒ ã¯ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆURLã‚’èª­ã¿å–ã‚Šã€èªè¨¼æƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚
+ã‚·ã‚¹ãƒ†ãƒ ã¯èªè¨¼æƒ…å ±ã¨ã‚¢ã‚«ã‚¦ãƒ³ãƒˆåã‹ã‚‰Twitterã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’ä½œæˆã€ä¿å­˜ã—ã€ã‚¢ã‚«ã‚¦ãƒ³ãƒˆä¸€è¦§ã‚’å–å¾—ã™ã‚‹ã€‚
+ã‚·ã‚¹ãƒ†ãƒ ã¯ã€Œã‚¢ã‚«ã‚¦ãƒ³ãƒˆä¸€è¦§ã€ãƒšãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 
-### ‘ã‘ÖƒR[ƒX
+### ä»£æ›¿ã‚³ãƒ¼ã‚¹
 
-Twitter‚Ö‚ÌƒƒOƒCƒ“ƒLƒƒƒ“ƒZƒ‹F
-OAuth‚ð•Â‚¶‚éB
-ƒAƒNƒZƒXƒg[ƒNƒ“‚ÌŽæ“¾‚ðŽ¸”sF
-ƒAƒJƒEƒ“ƒg‚Ì“o˜^‚ÉŽ¸”s‚µ‚Ü‚µ‚½‚ð•\Ž¦
+Twitterã¸ã®ãƒ­ã‚°ã‚¤ãƒ³ã‚­ãƒ£ãƒ³ã‚»ãƒ«ï¼š
+OAuthã‚’é–‰ã˜ã‚‹ã€‚
+ã‚¢ã‚¯ã‚»ã‚¹ãƒˆãƒ¼ã‚¯ãƒ³ã®å–å¾—ã‚’å¤±æ•—ï¼š
+ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ç™»éŒ²ã«å¤±æ•—ã—ã¾ã—ãŸã‚’è¡¨ç¤º
 
-## TwitterƒAƒJƒEƒ“ƒg‚©‚çƒƒOƒAƒEƒg‚Å‚«‚é
+## Twitterã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‹ã‚‰ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã§ãã‚‹
 
-## FacebookƒAƒJƒEƒ“ƒg‚ÉƒƒOƒCƒ“‚Å‚«‚é
+## Facebookã‚¢ã‚«ã‚¦ãƒ³ãƒˆã«ãƒ­ã‚°ã‚¤ãƒ³ã§ãã‚‹
 
-## FacebookƒAƒJƒEƒ“ƒg‚©‚çƒƒOƒAƒEƒg‚Å‚«‚é
+## Facebookã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‹ã‚‰ãƒ­ã‚°ã‚¢ã‚¦ãƒˆã§ãã‚‹

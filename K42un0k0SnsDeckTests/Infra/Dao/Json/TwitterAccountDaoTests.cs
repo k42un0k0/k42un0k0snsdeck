@@ -1,14 +1,11 @@
 ﻿using Xunit;
-using K42un0k0SnsDeck.Infra.Dao.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Moq;
 using K42un0k0SnsDeck.Infra.Provider;
-using K42un0k0SnsDeck.Models;
 using K42un0k0SnsDeck.Infra.Dto.Json;
+using K42un0k0SnsDeck.Infra.Dao.Json;
 
-namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
+namespace K42un0k0SnsDeckTests.Infra.Dao.Json
 {
     public class TwitterAccountDaoTests
     {
@@ -16,10 +13,10 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
         public void AddTest()
         {
             var mockJsonProvider = new Mock<IJsonProvider>();
-            var newAccount = new TwitterAccountDto(0, "", "");
+            var newAccount = new TwitterAccountDto(0, "", "", "");
             var list = new List<TwitterAccountDto>
             {
-                new TwitterAccountDto(1, "", "")
+                new TwitterAccountDto(1, "", "", "")
             };
 
             mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore<List<TwitterAccountDto>>(It.IsAny<string>())).Returns(list);
@@ -35,7 +32,7 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
         public void FindAllTest()
         {
             var mockJsonProvider = new Mock<IJsonProvider>();
-            var account1 = new TwitterAccountDto(1, "", "");
+            var account1 = new TwitterAccountDto(1, "", "", "");
             var list = new List<TwitterAccountDto>
             {
                 account1

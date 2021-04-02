@@ -29,13 +29,15 @@ endnote
 
 boundary "「アカウント一覧」ページ" as AccountListWindow
 boundary "「OAuth on Twitter」ページ" as TwitterOAuthWindow
-control TwitterService
+control TwitterOAuthProvider
+control CreateTwitterAccountFromOAuthCredentialsUsecase
 control TwitterClient
 control TwitterAccountRepository
 control FacebookAccountRepository
 entity TwitterAccount
 entity FacebookAccount
 
+activate AccountListWindow
 ユーザー -> AccountListWindow : 「Twitterアカウントの追加」ボタンをクリック
 AccountListWindow -> TwitterOAuthWindow : Show()
 activate TwitterOAuthWindow
@@ -44,33 +46,35 @@ alt ログインキャンセル
 TwitterOAuthWindow -> TwitterOAuthWindow : Close()
 end
 ユーザー -> TwitterOAuthWindow : ログイン
-TwitterOAuthWindow -> TwitterOAuthWindow : redirectUrl = getRedirectUrl
+TwitterOAuthWindow -> TwitterOAuthProvider : oauthUrl = OAuthUrl()
+activate TwitterOAuthProvider
+TwitterOAuthWindow -> TwitterOAuthProvider : oauthCrednetials = FetchOAuthCredentialsFromRedirectUrl(redirectUrl)
+deactivate TwitterOAuthProvider
 alt アクセストークンの取得に失敗
 TwitterOAuthWindow -> TwitterOAuthWindow : showAuthorizationErrorMessage()
 end
-TwitterOAuthWindow -> TwitterService : configureFromRedirectUrl(redirectUrl)
-activate TwitterService
-TwitterOAuthWindow -> TwitterService : account = createTwitterAccount()
-TwitterService -> TwitterClient : getAccountName()
+TwitterOAuthWindow -> CreateTwitterAccountFromOAuthCredentialsUsecase : exec(oauthCredentials)
+activate CreateTwitterAccountFromOAuthCredentialsUsecase
+activate TwitterClient
+CreateTwitterAccountFromOAuthCredentialsUsecase -> TwitterClient : getAccountName()
 alt アカウント名の取得に失敗
 TwitterOAuthWindow -> TwitterOAuthWindow : showAuthorizationErrorMessage()
 end
-activate TwitterClient
-deactivate TwitterClient
-TwitterService -> TwitterAccount : new
+CreateTwitterAccountFromOAuthCredentialsUsecase -> TwitterAccount : new
 activate TwitterAccount
 deactivate TwitterAccount
 deactivate TwitterClient
-deactivate TwitterService
-TwitterOAuthWindow -> TwitterAccountRepository : save(account)
+CreateTwitterAccountFromOAuthCredentialsUsecase -> TwitterAccountRepository : save(account)
 activate TwitterAccountRepository
+deactivate CreateTwitterAccountFromOAuthCredentialsUsecase
 TwitterOAuthWindow -> TwitterOAuthWindow : close()
+TwitterOAuthWindow -> AccountListWindow : OnClose()
 deactivate TwitterOAuthWindow
 AccountListWindow -> TwitterAccountRepository : findAll()
 TwitterAccountRepository -> TwitterAccount : create()
 AccountListWindow -> FacebookAccountRepository : findAll()
-FacebookAccountRepository -> FacebookAccount : create()
 activate FacebookAccountRepository
+FacebookAccountRepository -> FacebookAccount : create()
 deactivate FacebookAccountRepository
 deactivate TwitterAccountRepository
 AccountListWindow -> ユーザー : アカウント一覧の表示

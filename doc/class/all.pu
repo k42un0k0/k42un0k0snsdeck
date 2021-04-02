@@ -4,11 +4,21 @@
 !include provider.pu
 !include model.pu
 
-interface  ITwitterAccountFactory{
-    + TwitterAccount createFromRedirectUri(Uri redirectUrl)
+class OAuthCredentials{
+    + string AccessToken
+    + string AccessTokenSecret
 }
+interface  ICreateAccountFromOAuthCredentialsUseCase{
+    + void exec(OAuthCredentials credentials)
+}
+interface  IOAuthProvider{
+    + string OAuthUrl()
+    + OAuthCredentials FetchOAuthCredentialsFromRedirectUrl(string redirectUrl)
+}
+class TwitterOAuthProvider{
 
-class  TwitterAccountFactory{
+}
+class  CreateTwitterAccountFromOAuthCredentialsUseCase{
 }
 
 class TwitterClient{
@@ -37,11 +47,16 @@ class FacebookJsonDao{
 
 AccountListWindow ..> ITwitterAccountRepository
 AccountListWindow ..> IFacebookAccountRepository
-TwitterOAuthWindow ..> ITwitterAccountFactory
-TwitterAccountFactory --|> ITwitterAccountFactory
-TwitterAccountFactory ..> TwitterClient
+OAuthWindow ..> IOAuthProvider
+IOAuthProvider ..> OAuthCredentials
+IOAuthProvider <|-- TwitterOAuthProvider
+OAuthWindow ..> ICreateAccountFromOAuthCredentialsUseCase
+ICreateAccountFromOAuthCredentialsUseCase ..> OAuthCredentials
+ICreateAccountFromOAuthCredentialsUseCase <|-- CreateTwitterAccountFromOAuthCredentialsUseCase
+CreateTwitterAccountFromOAuthCredentialsUseCase ..> TwitterClient
+CreateTwitterAccountFromOAuthCredentialsUseCase ..> TwitterAccountRepository
+CreateTwitterAccountFromOAuthCredentialsUseCase ..> TwitterAccount
 TwitterClient ..> System.Net.Http.HttpClient
-ITwitterAccountFactory ..> TwitterAccount
 ITwitterAccountRepository ..> TwitterAccount
 IFacebookAccountRepository ..> FacebookAccount
 TwitterAccountRepository --|> ITwitterAccountRepository

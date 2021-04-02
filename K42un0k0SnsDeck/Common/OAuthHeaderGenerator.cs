@@ -1,10 +1,10 @@
-﻿using K42un0k0SnsDeck.Common;
+﻿using K42un0k0SnsDeck.Constants;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace K42un0k0SnsDeck.Infra.Http.Common
+namespace K42un0k0SnsDeck.Common
 {
     /// <summary>
     /// oauthのシグネチャの計算とヘッダーを作成するクラス
@@ -12,7 +12,7 @@ namespace K42un0k0SnsDeck.Infra.Http.Common
     /// </summary>
     /// 
 
-    public class OAuthValues
+    public class OAuthHeaderGenerator
     {
         private string HttpMethod { get; set; }
         private string BaseUrl { get; set; }
@@ -28,7 +28,7 @@ namespace K42un0k0SnsDeck.Infra.Http.Common
         private SortedDictionary<string, string> parameters = new SortedDictionary<string, string>();
 
 
-        public OAuthValues(string baseUrl, string httpMethod)
+        public OAuthHeaderGenerator(string baseUrl, string httpMethod)
         {
             BaseUrl = baseUrl;
             HttpMethod = httpMethod;

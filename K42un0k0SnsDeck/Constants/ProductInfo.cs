@@ -2,7 +2,7 @@
 using System.Reflection;
 
 // TODO: 実装の仕方が問題ないか調べる
-namespace K42un0k0SnsDeck.Common
+namespace K42un0k0SnsDeck.Constants
 {
     public static class ProductInfo
     {
@@ -114,7 +114,7 @@ namespace K42un0k0SnsDeck.Common
         /// </summary>
         public static string CLRBuildVersion
         {
-            get { return System.Reflection.Assembly.GetExecutingAssembly().ImageRuntimeVersion; }
+            get { return Assembly.GetExecutingAssembly().ImageRuntimeVersion; }
         }
         /// <summary>
         /// 実行中の CLR バージョン文字列を取得します。

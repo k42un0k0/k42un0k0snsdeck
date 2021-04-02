@@ -6,13 +6,13 @@ class AccountListWindow{
     - openTwitterOAuthDialog()
 }
 
-class TwitterOAuthWindow{
+class OAuthWindow{
     - getRedirectUrl()
     - showAuthorizationErrorMessage()
 }
 
 Window <|-- AccountListWindow
-Window <|-- TwitterOAuthWindow
-AccountListWindow ..> TwitterOAuthWindow
+Window <|-- OAuthWindow
+AccountListWindow ..> OAuthWindow
 
 @enduml

@@ -15,12 +15,13 @@ namespace K42un0k0SnsDeck.Views
     /// <summary>
     /// TwitterOAuthWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class TwitterOAuthWindow : Window
+    public partial class OAuthWindow : Window
     {
-        public TwitterOAuthWindow()
+        public OAuthWindow()
         {
             InitializeComponent();
         }
+
 
         private void WebView_Loaded(object sender, RoutedEventArgs e)
         {

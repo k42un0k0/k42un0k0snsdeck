@@ -2,11 +2,11 @@
 using System.Net;
 using K42un0k0SnsDeck.Common;
 using Moq;
-using System;
+using K42un0k0SnsDeck.Constants;
 
-namespace K42un0k0SnsDeck.Infra.Http.Common.Tests
+namespace K42un0k0SnsDeckTests.Common
 {
-    public class OAuthValuesTests
+    public class OAuthHeaderGeneratorTests
     {
 
         [Fact()]
@@ -23,11 +23,11 @@ namespace K42un0k0SnsDeck.Infra.Http.Common.Tests
             // ↓postmanで作成した値
             var signatureExpect = "hNjZJBPWF/Toavf2ESTuntujkZg=";
             var headerExpect = "OAuth oauth_callback=\"https%3A%2F%2Flocalhost%3A8000\",oauth_consumer_key=\"ULoMphmQLJ1gVY0q64Vp55UCc\",oauth_nonce=\"JCKNUMB75U\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1617356469\",oauth_version=\"1.0\",oauth_signature=\"hNjZJBPWF%2FToavf2ESTuntujkZg%3D\"";
-            var oauthValues = new OAuthValues(TwitterUrl.REQUEST_TOKEN, WebRequestMethods.Http.Post);
-            oauthValues.SetAcessTokenAndSecret("", "");
-            oauthValues.AddParameter("oauth_callback", "https://localhost:8000");
-            Assert.Equal(signatureExpect, oauthValues.Signature);
-            Assert.Equal(headerExpect, oauthValues.Header);
+            var OAuthHeaderGenerator = new OAuthHeaderGenerator(TwitterUrl.REQUEST_TOKEN, WebRequestMethods.Http.Post);
+            OAuthHeaderGenerator.SetAcessTokenAndSecret("", "");
+            OAuthHeaderGenerator.AddParameter("oauth_callback", "https://localhost:8000");
+            Assert.Equal(signatureExpect, OAuthHeaderGenerator.Signature);
+            Assert.Equal(headerExpect, OAuthHeaderGenerator.Header);
         }
     }
 }

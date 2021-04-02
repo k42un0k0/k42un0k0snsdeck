@@ -1,4 +1,4 @@
-﻿using K42un0k0SnsDeck.Models;
+﻿using K42un0k0SnsDeck.DomainModels.TwitterAccount;
 using System.Collections.Generic;
 
 namespace K42un0k0SnsDeck.DomainServices

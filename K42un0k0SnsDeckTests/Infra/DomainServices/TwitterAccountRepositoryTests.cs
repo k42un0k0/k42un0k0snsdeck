@@ -1,9 +1,9 @@
 ﻿using Xunit;
 using Moq;
 using K42un0k0SnsDeck.Infra.Dao.Json;
-using K42un0k0SnsDeck.Models;
 using System.Collections.Generic;
 using K42un0k0SnsDeck.Infra.Dto.Json;
+using K42un0k0SnsDeck.DomainModels.TwitterAccount;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
 {
@@ -14,7 +14,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
         {
             var mockDao = new Mock<ITwitterAccountDao>();
             var repository = new TwitterAccountRepository(() => mockDao.Object);
-            var newAccount = new TwitterAccount(0, "hello", "world");
+            var newAccount = new TwitterAccount(0, new TwitterAccountCredentials("aaa","bbb"), "world");
             repository.Add(newAccount);
 
             mockDao.Verify((dao) => dao.Add(It.IsAny<TwitterAccountDto>()), Times.Once());
@@ -26,8 +26,8 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
             var mockDao = new Mock<ITwitterAccountDao>();
             var list = new List<TwitterAccountDto>
             {
-                new TwitterAccountDto(1,"hello","world"),
-                new TwitterAccountDto(1,"sample","account"),
+                new TwitterAccountDto(1,"hello","aaa","world"),
+                new TwitterAccountDto(1,"sample","bbb","account"),
             };
 
             mockDao.Setup((dao) => dao.FindAll()).Returns(list);

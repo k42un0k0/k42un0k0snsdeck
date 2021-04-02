@@ -1,4 +1,4 @@
-﻿namespace K42un0k0SnsDeck.Infra.Http
+﻿namespace K42un0k0SnsDeck.Constants
 {
     public static class TwitterUrl
     {

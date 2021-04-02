@@ -10,9 +10,13 @@ interface FacebookAction {
 
 class TwitterAccount {
     + Long id
-    + string accessToken
     + string userName
     + string iconPath
+}
+
+class TwitterAccountCreadential{
+    + string accessToken
+    + string accessTokenSecret
 }
 
 class TwitterTimeline {
@@ -64,6 +68,7 @@ class FacebookNotification {
 ユーザー o-- TwitterAccount
 ユーザー o-- FacebookAccount
 TwitterAccount o-- TwitterAction
+TwitterAccount o-- TwitterAccountCreadential
 TwitterAction --|> TwitterTimeline
 TwitterAction --|> TwitterList
 TwitterAction --|> TwitterListTimeline
