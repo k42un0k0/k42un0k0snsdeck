@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace K42un0k0SnsDeckTests
+namespace K42un0k0SnsDeckTests.TestUtil
 {
     public static class MockUtil
     {

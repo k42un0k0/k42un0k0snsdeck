@@ -1,8 +1,8 @@
 ﻿using Xunit;
 using System.Collections.Generic;
-using K42un0k0SnsDeckTests;
 using System.IO;
 using System.Threading.Tasks;
+using K42un0k0SnsDeckTests.TestUtil;
 
 namespace K42un0k0SnsDeck.Infra.Provider.Tests
 {

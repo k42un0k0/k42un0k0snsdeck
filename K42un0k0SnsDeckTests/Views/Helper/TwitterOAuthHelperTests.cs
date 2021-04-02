@@ -6,7 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Moq.Protected;
 using System.Threading;
-using K42un0k0SnsDeckTests;
+using K42un0k0SnsDeckTests.TestUtil;
 
 namespace K42un0k0SnsDeck.Views.Helper.Tests
 {

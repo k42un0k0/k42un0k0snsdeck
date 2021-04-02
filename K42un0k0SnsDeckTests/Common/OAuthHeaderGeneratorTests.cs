@@ -3,6 +3,7 @@ using System.Net;
 using K42un0k0SnsDeck.Common;
 using Moq;
 using K42un0k0SnsDeck.Constants;
+using K42un0k0SnsDeckTests.TestUtil;
 
 namespace K42un0k0SnsDeckTests.Common
 {

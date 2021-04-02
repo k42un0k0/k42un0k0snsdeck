@@ -2,7 +2,7 @@
 using System.Web;
 using Xunit;
 
-namespace K42un0k0SnsDeckTests
+namespace K42un0k0SnsDeckTests.TestUtil
 {
     public class SampleTests
     {

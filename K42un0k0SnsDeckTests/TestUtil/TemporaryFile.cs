@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace K42un0k0SnsDeckTests
+namespace K42un0k0SnsDeckTests.TestUtil
 {
     public sealed class TemporaryFile : IDisposable
     {
