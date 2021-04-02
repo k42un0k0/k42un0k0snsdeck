@@ -2,7 +2,7 @@
 
 namespace K42un0k0SnsDeck.Usecases
 {
-    public class CreateTwitterAccountWhenOAuth : ICreateAccountWhenOAuth
+    public class CreateTwitterAccountWhenOAuthUsecase : ICreateAccountWhenOAuthUsecase
     {
         public void exec(CreateAcountWhenOAuthCommand command)
         {

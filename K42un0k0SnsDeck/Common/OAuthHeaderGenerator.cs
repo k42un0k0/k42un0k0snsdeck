@@ -63,7 +63,6 @@ namespace K42un0k0SnsDeck.Common
                 {
                     parameterString = parameterString + (parameterString == "" ? "" : "&") + $"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}";
                 }
-                System.Diagnostics.Debug.Print(parameterString);
                 return parameterString;
             }
         }
@@ -72,7 +71,6 @@ namespace K42un0k0SnsDeck.Common
         {
             get
             {
-                System.Diagnostics.Debug.Print($"{HttpMethod}&{Uri.EscapeDataString(BaseUrl)}&{Uri.EscapeDataString(ParameterString)}");
                 return Encoding.UTF8.GetBytes($"{HttpMethod}&{Uri.EscapeDataString(BaseUrl)}&{Uri.EscapeDataString(ParameterString)}");
             }
         }
@@ -80,7 +78,6 @@ namespace K42un0k0SnsDeck.Common
         {
             get
             {
-                System.Diagnostics.Debug.Print($"{Uri.EscapeDataString(AppConfig.Singleton.TwitterApiSecretKey)}&{Uri.EscapeDataString(AccessTokenSecret)}");
                 return Encoding.UTF8.GetBytes($"{Uri.EscapeDataString(AppConfig.Singleton.TwitterApiSecretKey)}&{Uri.EscapeDataString(AccessTokenSecret)}");
             }
         }
