@@ -29,19 +29,7 @@ namespace K42un0k0SnsDeck.Infra.Http
 
         public string GetAccountName(FacebookAccountCredentials credentials)
         {
-            var oauth = new OAuthHeaderGenerator(FacebookUrl.VERIFY_CREDENTIALS, WebRequestMethods.Http.Get);
-            oauth.SetAcessTokenAndSecret("", "");
-
-            var request = new HttpRequestMessage()
-            {
-                RequestUri = new Uri(FacebookUrl.VERIFY_CREDENTIALS),
-                Method = HttpMethod.Get,
-            };
-            request.Headers.Add("Authorization", oauth.Header);
-
-            var json = httpClient.SendAsync(request).Result.Content.ReadAsStringAsync().Result;
-            var obj = JObject.Parse(json);
-            return obj["name"].ToObject<string>();
+            throw new NotImplementedException();
         }
 
         public FacebookAccountCredentials FetchCredentialsFromRedirectUrl(Uri redirectUrl)
