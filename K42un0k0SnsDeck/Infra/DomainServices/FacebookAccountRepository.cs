@@ -1,5 +1,5 @@
-﻿using K42un0k0SnsDeck.DomainServices;
-using K42un0k0SnsDeck.Models;
+﻿using K42un0k0SnsDeck.DomainModels.FacebookAccount;
+using K42un0k0SnsDeck.DomainServices;
 using System.Collections.Generic;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices

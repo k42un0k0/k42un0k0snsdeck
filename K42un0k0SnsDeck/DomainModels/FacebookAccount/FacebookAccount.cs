@@ -1,8 +1,8 @@
-﻿namespace K42un0k0SnsDeck.DomainModels.TwitterAccount
+﻿namespace K42un0k0SnsDeck.DomainModels.FacebookAccount
 {
-    public class TwitterAccount
+    public class FacebookAccount
     {
-        public TwitterAccount(long id, TwitterAccountCredentials credentials, string accountName)
+        public FacebookAccount(long id, FacebookAccountCredentials credentials, string accountName)
         {
             Id = id;
             Credentials = credentials;
@@ -10,16 +10,16 @@
         }
 
         public long Id { get; set; }
-        public TwitterAccountCredentials Credentials { get; set; }
+        public FacebookAccountCredentials Credentials { get; set; }
         public string AccountName { get; set; }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is TwitterAccount))
+            if (!(obj is FacebookAccount))
             {
                 return false;
             }
-            var account = (TwitterAccount)obj;
+            var account = (FacebookAccount)obj;
             return account.Id == Id && account.Credentials.Equals(Credentials) && account.AccountName == AccountName;
         }
     }

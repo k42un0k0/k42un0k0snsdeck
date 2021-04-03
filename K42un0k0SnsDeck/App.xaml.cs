@@ -3,7 +3,9 @@ using K42un0k0SnsDeck.Views;
 using Prism.Unity;
 using Prism.Ioc;
 using System.Threading;
-using K42un0k0SnsDeck.Views.Helper;
+using K42un0k0SnsDeck.Infra.Http;
+using K42un0k0SnsDeck.Infra.DomainServices;
+using K42un0k0SnsDeck.DomainServices;
 
 namespace K42un0k0SnsDeck
 {
@@ -49,7 +51,10 @@ namespace K42un0k0SnsDeck
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<TwitterOAuthHelper>();
+            containerRegistry.RegisterSingleton<ITwitterClient, TwitterClient>();
+            containerRegistry.RegisterSingleton<ITwitterAccountRepository, TwitterAccountRepository>();
+            containerRegistry.RegisterSingleton<IFacebookClient, FacebookClient>();
+            containerRegistry.RegisterSingleton<IFacebookAccountRepository, FacebookAccountRepository>();
         }
     }
 }

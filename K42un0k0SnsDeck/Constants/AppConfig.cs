@@ -40,5 +40,19 @@ namespace K42un0k0SnsDeck.Constants
                 return ConfigurationManager.AppSettings.Get("TwitterCallbackUrl");
             }
         }
+        public virtual string FacebookAppId
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get("FacebookAppId");
+            }
+        }
+        public virtual string FacebookCallbackUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get("FacebookCallbackUrl");
+            }
+        }
     }
 }
