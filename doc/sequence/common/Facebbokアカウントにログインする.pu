@@ -1,0 +1,85 @@
+@startuml 複数のFacebookアカウントにログインする
+
+!include ../sequence.conf 
+
+actor ユーザー
+
+note left
+### 基本コース
+
+システムは「アカウント一覧」ページを表示する。
+ユーザーは「Facebookアカウントの追加」ボタンをクリックする。
+システムはFacebookのＯＡｕｔｈを表示する。
+ユーザーはログインする。
+システムはリダイレクトURLを取得し、アクセストークンを読み取る。
+システムはアカウント名を保存し、Facebookアカウントを作成。
+システムはアカウント一覧を取得する。
+システムは「アカウント一覧」ページを表示する。
+
+### 代替コース
+
+Facebookへのログインキャンセル：
+OAuthを閉じる。
+アクセストークンの取得を失敗：
+アカウントの登録に失敗しましたを表示
+アカウント名の取得を失敗：
+アカウントの登録に失敗しましたを表示
+
+endnote
+
+boundary "「アカウント一覧」ページ" as AccountListWindow
+boundary "「OAuth on Facebook」ページ" as FacebookOAuthWindow
+control FacebookOAuthProvider
+control CreateFacebookAccountFromOAuthCredentialsUsecase
+control FacebookClient
+control FacebookAccountRepository
+control FacebookAccountRepository
+entity FacebookAccount
+entity FacebookAccount
+
+activate AccountListWindow
+ユーザー -> AccountListWindow : 「Facebookアカウントの追加」ボタンをクリック
+alt すでにFacebookアカウントがある場合
+AccountListWindow -> AccountListWindow : showErrorMessage()
+end
+AccountListWindow -> FacebookOAuthWindow : Show()
+activate FacebookOAuthWindow
+alt ログインキャンセル
+ユーザー -> FacebookOAuthWindow : 「閉じる」ボタンを押す
+FacebookOAuthWindow -> FacebookOAuthWindow : Close()
+end
+ユーザー -> FacebookOAuthWindow : ログイン
+FacebookOAuthWindow -> FacebookOAuthProvider : oauthUrl = OAuthUrl()
+activate FacebookOAuthProvider
+FacebookOAuthWindow -> FacebookOAuthProvider : oauthCrednetials = FetchOAuthCredentialsFromRedirectUrl(redirectUrl)
+deactivate FacebookOAuthProvider
+alt アクセストークンの取得に失敗
+FacebookOAuthWindow -> FacebookOAuthWindow : showAuthorizationErrorMessage()
+end
+FacebookOAuthWindow -> CreateFacebookAccountFromOAuthCredentialsUsecase : exec(oauthCredentials)
+activate CreateFacebookAccountFromOAuthCredentialsUsecase
+activate FacebookClient
+CreateFacebookAccountFromOAuthCredentialsUsecase -> FacebookClient : getAccountName()
+alt アカウント名の取得に失敗
+FacebookOAuthWindow -> FacebookOAuthWindow : showAuthorizationErrorMessage()
+end
+CreateFacebookAccountFromOAuthCredentialsUsecase -> FacebookAccount : new
+activate FacebookAccount
+deactivate FacebookAccount
+deactivate FacebookClient
+CreateFacebookAccountFromOAuthCredentialsUsecase -> FacebookAccountRepository : save(account)
+activate FacebookAccountRepository
+deactivate CreateFacebookAccountFromOAuthCredentialsUsecase
+FacebookOAuthWindow -> FacebookOAuthWindow : close()
+FacebookOAuthWindow -> AccountListWindow : OnClose()
+deactivate FacebookOAuthWindow
+AccountListWindow -> FacebookAccountRepository : findAll()
+FacebookAccountRepository -> FacebookAccount : create()
+AccountListWindow -> FacebookAccountRepository : findAll()
+activate FacebookAccountRepository
+FacebookAccountRepository -> FacebookAccount : create()
+deactivate FacebookAccountRepository
+deactivate FacebookAccountRepository
+AccountListWindow -> ユーザー : アカウント一覧の表示
+
+@enduml

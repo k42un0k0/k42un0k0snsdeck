@@ -1,0 +1,33 @@
+@startuml Twitterアカウントからログアウトする
+
+!include ../sequence.conf 
+
+actor ユーザー
+
+note left
+### 基本コース
+
+システムは「アカウント一覧」ページを表示する。
+ユーザーは「Twitterアカウントの削除」ボタンをクリックする。
+システムは「本当に削除してよろしいですか？」ダイアログを表示し、Twitterアカウントを削除する。
+
+### 代替コース
+
+指定されたアカウントがない場合：
+何もしない
+endnote
+
+boundary "「アカウント一覧」ページ" as accountListPage
+boundary "「本当に削除してよろしいですか？」ダイアログ" as deleteConfirmDialog
+control TwitterRepository
+
+ユーザー -> accountListPage : 「Twitterアカウント削除」ボタンをクリック
+accountListPage -> deleteConfirmDialog : result = Show()
+alt キャンセルされた場合
+accountListPage -> ユーザー : 何もせず終わる
+end
+accountListPage -> accountListPage : account = selectedAccount()
+accountListPage -> TwitterRepository : delete(account)
+accountListPage -> ユーザー : 画面を更新して返す
+
+@enduml
