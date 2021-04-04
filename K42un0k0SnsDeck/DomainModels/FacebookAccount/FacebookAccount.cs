@@ -2,14 +2,14 @@
 {
     public class FacebookAccount
     {
-        public FacebookAccount(long id, FacebookAccountCredentials credentials, string accountName)
+        public FacebookAccount(string id, FacebookAccountCredentials credentials, string accountName)
         {
             Id = id;
             Credentials = credentials;
             AccountName = accountName;
         }
 
-        public long Id { get; set; }
+        public string Id { get; set; }
         public FacebookAccountCredentials Credentials { get; set; }
         public string AccountName { get; set; }
 

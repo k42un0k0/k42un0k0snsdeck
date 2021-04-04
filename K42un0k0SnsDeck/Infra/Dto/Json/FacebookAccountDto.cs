@@ -7,25 +7,27 @@ namespace K42un0k0SnsDeck.Infra.Dto.Json
     public class FacebookAccountDto
     {
 
-        public FacebookAccountDto(long id, string accessToken, string accessTokenSecret, string accountName)
+        public FacebookAccountDto(string id, string accessToken, string tokenType, long expiresIn, string accountName)
         {
             Id = id;
             AccessToken = accessToken;
-            AccessTokenSecret = accessTokenSecret;
+            TokenType = tokenType;
+            ExpiresIn = expiresIn;
             AccountName = accountName;
         }
-        public long Id { get; set; }
+        public string Id { get; set; }
         public string AccessToken { get; set; }
-        public string AccessTokenSecret { get; set; }
+        public string TokenType { get; set; }
+        public long ExpiresIn { get; set; }
         public string AccountName { get; set; }
 
         public static implicit operator FacebookAccountDto(FacebookAccount model)
         {
-            return new FacebookAccountDto(model.Id, model.Credentials.AccessToken, model.Credentials.AccessTokenSecret, model.AccountName);
+            return new FacebookAccountDto(model.Id, model.Credentials.AccessToken, model.Credentials.TokenType, model.Credentials.ExpiresIn, model.AccountName);
         }
         public static implicit operator FacebookAccount(FacebookAccountDto dto)
         {
-            return new FacebookAccount(dto.Id, new FacebookAccountCredentials(dto.AccessToken, dto.AccessTokenSecret), dto.AccountName);
+            return new FacebookAccount(dto.Id, new FacebookAccountCredentials(dto.AccessToken, dto.TokenType, dto.ExpiresIn), dto.AccountName);
         }
     }
 }

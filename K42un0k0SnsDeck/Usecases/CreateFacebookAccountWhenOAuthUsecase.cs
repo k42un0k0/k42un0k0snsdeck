@@ -16,8 +16,9 @@ namespace K42un0k0SnsDeck.Usecases
         public void exec(Uri redirectUrl)
         {
             var credentials = facebookClient.FetchCredentialsFromRedirectUrl(redirectUrl);
-            var accountName = facebookClient.GetAccountName(credentials);
-            var account = new FacebookAccount(0, credentials, accountName);
+            var userId = facebookClient.GetUserId(credentials);
+            var accountName = facebookClient.GetAccountName(userId, credentials.AccessToken);
+            var account = new FacebookAccount(userId, credentials, accountName);
             facebookAccountRepository.Add(account);
         }
     }

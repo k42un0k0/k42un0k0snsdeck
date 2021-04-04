@@ -24,22 +24,6 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json
         // TODO: indexをはるか、作成に制限をつけるか考える
         public void Add(FacebookAccountDto dto)
         {
-            var len = _data.Count;
-            long id;
-            if (len == 0)
-            {
-                id = 1;
-            }
-            else
-            {
-                var last = _data[len - 1];
-                id = last.Id + 1;
-            }
-
-            if (dto.Id == 0)
-            {
-                dto.Id = id;
-            }
             _data.Add(dto);
         }
         public List<FacebookAccountDto> FindAll()

@@ -1,4 +1,5 @@
-﻿using K42un0k0SnsDeck.Infra.Http;
+﻿using K42un0k0SnsDeck.Constants;
+using K42un0k0SnsDeck.Infra.Http;
 using K42un0k0SnsDeck.Usecases;
 using Prism.Ioc;
 using System;
@@ -35,11 +36,11 @@ namespace K42un0k0SnsDeck.Views
             {
                 case OAuthProvider.Twitter:
                     oauthUrl = Container.Resolve<ITwitterClient>().GetOAuthUrl();
-                    window = new OAuthWindow(oauthUrl, Container.Resolve<CreateTwitterAccountWhenOAuthUsecase>());
+                    window = new OAuthWindow(oauthUrl, AppConfig.Singleton.TwitterCallbackUrl, Container.Resolve<CreateTwitterAccountWhenOAuthUsecase>());
                     break;
                 case OAuthProvider.Facebook:
                     oauthUrl = Container.Resolve<IFacebookClient>().GetOAuthUrl();
-                    window = new OAuthWindow(oauthUrl, Container.Resolve<CreateFacebookAccountWhenOAuthUsecase>());
+                    window = new OAuthWindow(oauthUrl, AppConfig.Singleton.FacebookCallbackUrl, Container.Resolve<CreateFacebookAccountWhenOAuthUsecase>());
                     break;
                 default:
                     throw new NotImplementedException();

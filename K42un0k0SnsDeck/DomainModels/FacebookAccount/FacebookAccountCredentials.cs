@@ -3,12 +3,15 @@
     public class FacebookAccountCredentials
     {
         public string AccessToken { get; set; }
-        public string AccessTokenSecret { get; set; }
+        public string TokenType { get; set; }
+        public long ExpiresIn { get; set; }
 
-        public FacebookAccountCredentials(string accessToken, string accessTokenSecret)
+
+        public FacebookAccountCredentials(string accessToken, string tokenType, long expiresIn)
         {
             AccessToken = accessToken;
-            AccessTokenSecret = accessTokenSecret;
+            TokenType = tokenType;
+            ExpiresIn = expiresIn;
         }
         public override bool Equals(object obj)
         {
@@ -17,7 +20,7 @@
                 return false;
             }
             var credentials = (FacebookAccountCredentials)obj;
-            return credentials.AccessToken == AccessToken && credentials.AccessTokenSecret == AccessTokenSecret;
+            return credentials.AccessToken == AccessToken && credentials.TokenType == TokenType && credentials.ExpiresIn == ExpiresIn;
         }
 
     }

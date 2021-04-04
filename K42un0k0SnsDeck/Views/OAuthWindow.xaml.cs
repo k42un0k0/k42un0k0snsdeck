@@ -11,15 +11,17 @@ namespace K42un0k0SnsDeck.Views
     /// </summary>
     public partial class OAuthWindow : Window
     {
-        public OAuthWindow(Uri oauthUrl, ICreateAccountWhenOAuthUsecase usecase)
+        public OAuthWindow(Uri oauthUrl,string callbackUrl, ICreateAccountWhenOAuthUsecase usecase)
         {
             InitializeComponent();
             _oauthUrl = oauthUrl;
             _usecase = usecase;
+            _callbackUrl = callbackUrl;
         }
 
         private Uri _oauthUrl;
         private ICreateAccountWhenOAuthUsecase _usecase;
+        private string _callbackUrl;
 
         private void WebView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -29,7 +31,7 @@ namespace K42un0k0SnsDeck.Views
                 webView.NavigationStarting += (s, e) =>
                 {
                     System.Diagnostics.Debug.Print(e.Uri);
-                    if (e.Uri.StartsWith(AppConfig.Singleton.TwitterCallbackUrl))
+                    if (e.Uri.StartsWith(_callbackUrl))
                     {
                         _usecase.exec(new Uri(e.Uri));
                     }

@@ -47,6 +47,13 @@ namespace K42un0k0SnsDeck.Constants
                 return ConfigurationManager.AppSettings.Get("FacebookAppId");
             }
         }
+        public virtual string FacebookAppSecret
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings.Get("FacebookAppSecret");
+            }
+        }
         public virtual string FacebookCallbackUrl
         {
             get
