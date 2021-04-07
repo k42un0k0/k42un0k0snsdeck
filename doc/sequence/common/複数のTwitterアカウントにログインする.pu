@@ -68,7 +68,7 @@ CreateTwitterAccountFromOAuthCredentialsUsecase -> TwitterAccountRepository : sa
 activate TwitterAccountRepository
 deactivate CreateTwitterAccountFromOAuthCredentialsUsecase
 TwitterOAuthWindow -> TwitterOAuthWindow : close()
-TwitterOAuthWindow -> AccountListWindow : OnClose()
+TwitterOAuthWindow -> AccountListWindow : OnSuccess()
 deactivate TwitterOAuthWindow
 AccountListWindow -> TwitterAccountRepository : findAll()
 TwitterAccountRepository -> TwitterAccount : create()

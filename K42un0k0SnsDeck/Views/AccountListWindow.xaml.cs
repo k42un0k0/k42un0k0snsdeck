@@ -1,6 +1,5 @@
-﻿using K42un0k0SnsDeck.Constants;
-using K42un0k0SnsDeck.Infra.Http;
-using K42un0k0SnsDeck.Usecases;
+﻿using K42un0k0SnsDeck.ViewModels;
+using K42un0k0SnsDeck.Views.OAuthContext;
 using Prism.Ioc;
 using System;
 using System.Windows;
@@ -8,54 +7,45 @@ using Unity;
 
 namespace K42un0k0SnsDeck.Views
 {
-
-    /// <summary>
-    /// AccountListWindow.xaml の相互作用ロジック
-    /// </summary>
     public partial class AccountListWindow : Window
     {
-        private enum OAuthProvider
-        {
-            Twitter,
-            Facebook,
-        }
+
 
         [Dependency]
-        public IContainerProvider Container { get; set; }
+        public AccountListWindowViewModel ViewModel { get; set; }
+        [Dependency]
+        public OAuthContextProvider oauthContextProvider { get; set; }
 
         public AccountListWindow()
         {
             InitializeComponent();
         }
 
-        private void ShowOAuthWindow(OAuthProvider provider)
+
+        private void ShowOAuthWindow(OAuthProviderEnum provider)
         {
-            OAuthWindow window;
-            Uri oauthUrl;
-            switch (provider)
-            {
-                case OAuthProvider.Twitter:
-                    oauthUrl = Container.Resolve<ITwitterClient>().GetOAuthUrl();
-                    window = new OAuthWindow(oauthUrl, AppConfig.Singleton.TwitterCallbackUrl, Container.Resolve<CreateTwitterAccountWhenOAuthUsecase>());
-                    break;
-                case OAuthProvider.Facebook:
-                    oauthUrl = Container.Resolve<IFacebookClient>().GetOAuthUrl();
-                    window = new OAuthWindow(oauthUrl, AppConfig.Singleton.FacebookCallbackUrl, Container.Resolve<CreateFacebookAccountWhenOAuthUsecase>());
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-            window.Show();
+
+            new OAuthWindow(oauthContextProvider.GetContext(provider), OnOAuthSuccess).Show();
+        }
+        private void OnOAuthSuccess()
+        {
+            ViewModel.Load();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ShowOAuthWindow(OAuthProvider.Twitter);
+            ShowOAuthWindow(OAuthProviderEnum.Twitter);
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            ShowOAuthWindow(OAuthProvider.Facebook);
+            ShowOAuthWindow(OAuthProviderEnum.Facebook);
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            DataContext = ViewModel;
+            ViewModel.Load();
         }
     }
 }

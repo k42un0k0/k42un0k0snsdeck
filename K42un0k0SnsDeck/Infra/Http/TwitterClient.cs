@@ -13,11 +13,11 @@ namespace K42un0k0SnsDeck.Infra.Http
 {
     public interface ITwitterClient
     {
+        public TwitterAccountCredentials FetchCredentialsFromRedirectUrl(Uri redirectUrl);
         public Uri GetOAuthUrl();
         public long GetId(TwitterAccountCredentials credentials);
 
         public string GetAccountName(TwitterAccountCredentials credentials);
-        public TwitterAccountCredentials FetchCredentialsFromRedirectUrl(Uri redirectUrl);
     }
 
     public class TwitterClient : ITwitterClient

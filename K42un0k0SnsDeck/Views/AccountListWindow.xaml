@@ -5,17 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:K42un0k0SnsDeck.Views"
         mc:Ignorable="d"
+        Activated="Window_Activated"
         WindowStartupLocation="CenterOwner" 
         Title="AccountListWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0">アカウント一覧</TextBlock>
-
-        <Button Grid.Row="1" Click="Button_Click">押せ</Button>
-        <Button Grid.Row="2" Click="Button2_Click">押せ</Button>
-    </Grid>
+    <StackPanel>
+        <TextBlock >アカウント一覧</TextBlock>
+        <Button Click="Button_Click">押せ</Button>
+        <Button Click="Button2_Click">押せ</Button>
+        <TextBlock>Twitterアカウント</TextBlock>
+        <ListView ItemsSource="{Binding TwitterAccountList}" 
+                      Margin="0,5,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}"/>
+                        <TextBlock Text="{Binding AccountName}" FontSize="20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock>Facebookアカウント</TextBlock>
+        <ListView ItemsSource="{Binding FacebookAccountList}" 
+                      Margin="0,5,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}"/>
+                        <TextBlock Text="{Binding AccountName}" FontSize="20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackPanel>
 </Window>

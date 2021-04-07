@@ -1,52 +1,47 @@
-﻿using K42un0k0SnsDeck.Constants;
-using K42un0k0SnsDeck.Usecases;
+﻿using K42un0k0SnsDeck.Common;
+using K42un0k0SnsDeck.Views.OAuthContext;
 using System;
 using System.Windows;
 
 namespace K42un0k0SnsDeck.Views
 {
-
-    /// <summary>
-    /// TwitterOAuthWindow.xaml の相互作用ロジック
-    /// </summary>
     public partial class OAuthWindow : Window
     {
-        public OAuthWindow(Uri oauthUrl,string callbackUrl, ICreateAccountWhenOAuthUsecase usecase)
+        public OAuthWindow(IOAuthContext context, Action onSuccess)
         {
             InitializeComponent();
-            _oauthUrl = oauthUrl;
-            _usecase = usecase;
-            _callbackUrl = callbackUrl;
+            _onSuccess = onSuccess;
+            _context = context;
         }
 
-        private Uri _oauthUrl;
-        private ICreateAccountWhenOAuthUsecase _usecase;
-        private string _callbackUrl;
+        private readonly Action _onSuccess;
+        private readonly IOAuthContext _context;
 
         private void WebView_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                webView.Source = _oauthUrl;
+                webView.Source = _context.OAuthUrl;
                 webView.NavigationStarting += (s, e) =>
                 {
                     System.Diagnostics.Debug.Print(e.Uri);
-                    if (e.Uri.StartsWith(_callbackUrl))
+                    if (e.Uri.StartsWith(_context.CallbackUrl))
                     {
-                        _usecase.exec(new Uri(e.Uri));
+                        _context.Usecase.exec(new Uri(e.Uri));
                         e.Cancel = true;
+                        _onSuccess();
+                        Close();
                     }
                 };
             }
             catch (AggregateException err)
             {
-                var errorMessages = "";
-                foreach (var errInner in err.InnerExceptions)
-                {
-                    errorMessages += errInner.Message + "\n";
-                }
-
-                MessageBox.Show(errorMessages, "エラー");
+                MessageBoxUtil.ShowError(err);
+                Close();
+            }
+            catch (Exception err)
+            {
+                MessageBoxUtil.ShowError(err);
                 Close();
             }
         }

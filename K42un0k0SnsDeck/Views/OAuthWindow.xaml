@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:K42un0k0SnsDeck.Views"
         xmlns:WPF="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
-        Title="TwitterOAuthWindow" Height="450" Width="800">
+        Title="OAuthWindow" Height="450" Width="800">
     <Grid>
         <WPF:WebView2 x:Name="webView" Loaded="WebView_Loaded" />
     </Grid>
