@@ -25,6 +25,7 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json
         public void Add(FacebookAccountDto dto)
         {
             _data.Add(dto);
+            OnUpdateData();
         }
         public List<FacebookAccountDto> FindAll()
         {

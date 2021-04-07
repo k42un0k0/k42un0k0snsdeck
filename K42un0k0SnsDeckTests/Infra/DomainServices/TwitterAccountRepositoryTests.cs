@@ -13,7 +13,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
         public void AddTest()
         {
             var mockDao = new Mock<ITwitterAccountDao>();
-            var repository = new TwitterAccountRepository(() => mockDao.Object);
+            var repository = new TwitterAccountRepository();
             var newAccount = new TwitterAccount(0, new TwitterAccountCredentials("aaa","bbb"), "world");
             repository.Add(newAccount);
 
@@ -31,7 +31,7 @@ namespace K42un0k0SnsDeck.Infra.DomainServices.Tests
             };
 
             mockDao.Setup((dao) => dao.FindAll()).Returns(list);
-            var repository = new TwitterAccountRepository(() => mockDao.Object);
+            var repository = new TwitterAccountRepository();
 
             var actual = repository.FindAll();
             Assert.IsType<List<TwitterAccount>>(actual);

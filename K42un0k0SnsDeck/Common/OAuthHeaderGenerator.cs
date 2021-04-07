@@ -41,6 +41,7 @@ namespace K42un0k0SnsDeck.Common
             parameters.Add("oauth_signature_method", OAuthSignatureMethod);
             parameters.Add("oauth_timestamp", OAuthTimestamp);
             parameters.Add("oauth_version", OAuthVersion);
+            parameters.Add("oauth_token", AppConfig.Singleton.TwitterAccessToken);
         }
 
         public void AddParameter(string key, string value)
@@ -52,6 +53,21 @@ namespace K42un0k0SnsDeck.Common
         {
             AccessToken = accessToken;
             AccessTokenSecret = accessTokenSecret;
+            if (accessToken == "")
+            {
+                parameters.Remove("oauth_token");
+            }
+            else
+            {
+                try
+                {
+                    parameters.Add("oauth_token", accessToken);
+                }
+                catch (ArgumentException)
+                {
+                    parameters["oauth_token"] = accessToken;
+                }
+            }
         }
 
         private string ParameterString

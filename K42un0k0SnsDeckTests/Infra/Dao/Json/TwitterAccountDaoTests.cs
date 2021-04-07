@@ -19,7 +19,7 @@ namespace K42un0k0SnsDeckTests.Infra.Dao.Json
                 new TwitterAccountDto(1, "", "", "")
             };
 
-            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore<List<TwitterAccountDto>>(It.IsAny<string>())).Returns(list);
+            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore(It.IsAny<string>(), It.IsAny<List<TwitterAccountDto>>())).Returns(list);
 
             var dao = new TwitterAccountDao(() => mockJsonProvider.Object);
 
@@ -38,7 +38,7 @@ namespace K42un0k0SnsDeckTests.Infra.Dao.Json
                 account1
             };
 
-            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore<List<TwitterAccountDto>>(It.IsAny<string>()))
+            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore(It.IsAny<string>(), It.IsAny<List<TwitterAccountDto>>()))
                 .Returns(list);
             var dao = new TwitterAccountDao(() => mockJsonProvider.Object);
 

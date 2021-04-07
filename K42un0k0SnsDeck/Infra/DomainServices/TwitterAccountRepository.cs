@@ -4,24 +4,25 @@ using K42un0k0SnsDeck.Infra.Dao.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices
 {
     public class TwitterAccountRepository : ITwitterAccountRepository
     {
-        private readonly Func<ITwitterAccountDao> _getTwitterAccountDao;
-        public TwitterAccountRepository(Func<ITwitterAccountDao> getTwitterAccountDao)
+        [Dependency]
+        public ITwitterAccountDao twitterAccountDao;
+        public TwitterAccountRepository()
         {
-            _getTwitterAccountDao = getTwitterAccountDao;
         }
         public void Add(TwitterAccount account)
         {
-            _getTwitterAccountDao().Add(account);
+            twitterAccountDao.Add(account);
         }
 
         public List<TwitterAccount> FindAll()
         {
-            return _getTwitterAccountDao().FindAll().Select((dto) => (TwitterAccount)dto).ToList();
+            return twitterAccountDao.FindAll().Select((dto) => (TwitterAccount)dto).ToList();
         }
     }
 }

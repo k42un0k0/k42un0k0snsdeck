@@ -12,13 +12,13 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
         public void AddTest()
         {
             var mockJsonProvider = new Mock<IJsonProvider>();
-            var newAccount = new FacebookAccountDto("0", "", "",0, "");
+            var newAccount = new FacebookAccountDto("0", "", "", 0, "");
             var list = new List<FacebookAccountDto>
             {
                 new FacebookAccountDto("1", "", "",0, "")
             };
 
-            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore<List<FacebookAccountDto>>(It.IsAny<string>())).Returns(list);
+            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore(It.IsAny<string>(), It.IsAny<List<FacebookAccountDto>>())).Returns(list);
 
             var dao = new FacebookAccountDao(() => mockJsonProvider.Object);
 
@@ -31,13 +31,13 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json.Tests
         public void FindAllTest()
         {
             var mockJsonProvider = new Mock<IJsonProvider>();
-            var account1 = new FacebookAccountDto("1", "", "",0, "");
+            var account1 = new FacebookAccountDto("1", "", "", 0, "");
             var list = new List<FacebookAccountDto>
             {
                 account1
             };
 
-            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore<List<FacebookAccountDto>>(It.IsAny<string>()))
+            mockJsonProvider.Setup((jsonProvider) => jsonProvider.Restore(It.IsAny<string>(), It.IsAny<List<FacebookAccountDto>>()))
                 .Returns(list);
             var dao = new FacebookAccountDao(() => mockJsonProvider.Object);
 

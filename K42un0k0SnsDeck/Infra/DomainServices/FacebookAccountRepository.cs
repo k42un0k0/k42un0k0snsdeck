@@ -4,24 +4,25 @@ using K42un0k0SnsDeck.Infra.Dao.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity;
 
 namespace K42un0k0SnsDeck.Infra.DomainServices
 {
     public class FacebookAccountRepository : IFacebookAccountRepository
     {
-        private readonly Func<IFacebookAccountDao> _getFacebookAccountDao;
-        public FacebookAccountRepository(Func<IFacebookAccountDao> getFacebookAccountDao)
+        [Dependency]
+        public IFacebookAccountDao facebookAccountDao;
+        public FacebookAccountRepository()
         {
-            _getFacebookAccountDao = getFacebookAccountDao;
         }
         public void Add(FacebookAccount account)
         {
-            _getFacebookAccountDao().Add(account);
+            facebookAccountDao.Add(account);
         }
 
         public List<FacebookAccount> FindAll()
         {
-            return _getFacebookAccountDao().FindAll().Select((dto) => (FacebookAccount)dto).ToList();
+            return facebookAccountDao.FindAll().Select((dto) => (FacebookAccount)dto).ToList();
         }
     }
 }

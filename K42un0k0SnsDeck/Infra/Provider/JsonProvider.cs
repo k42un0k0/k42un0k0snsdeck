@@ -7,7 +7,7 @@ namespace K42un0k0SnsDeck.Infra.Provider
 {
     public interface IJsonProvider
     {
-        public T Restore<T>(string name);
+        public T Restore<T>(string name, T fallback);
         public void Store(string name, object obj);
 
     }
@@ -28,6 +28,12 @@ namespace K42un0k0SnsDeck.Infra.Provider
                 File.WriteAllText(_path, "{}");
                 ReadFile();
             }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(_path));
+                File.WriteAllText(_path, "{}");
+                ReadFile();
+            }
         }
 
         private void ReadFile()
@@ -42,15 +48,18 @@ namespace K42un0k0SnsDeck.Infra.Provider
             File.WriteAllText(_path, json);
         }
 
-        public T Restore<T>(string name)
+        public T Restore<T>(string name, T fallback)
         {
             _jobScheduler.Enqueue(ReadFile);
-            return _data[name].ToObject<T>();
+
+            var data = _data[name];
+            if (data == null) return fallback;
+            return data.ToObject<T>();
         }
         public void Store(string name, object obj)
         {
             var json = JsonSerializer.Serialize(obj);
-            _data[name] = JObject.Parse(json);
+            _data[name] = JToken.Parse(json);
             _jobScheduler.Enqueue(WriteFile);
         }
     }

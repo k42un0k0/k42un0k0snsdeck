@@ -3,17 +3,18 @@ using K42un0k0SnsDeck.Views;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
+using Unity;
 
 namespace K42un0k0SnsDeck.ViewModels
 {
     class MainWindowViewModel : BindableBase
     {
 
-        private Func<IContainerProvider> _getContainer;
-        public MainWindowViewModel(Func<IContainerProvider> getContainer)
+        [Dependency]
+        public IContainerProvider container;
+        public MainWindowViewModel()
         {
             _greeting = "こんにちは";
-            _getContainer = getContainer;
         }
 
         private string _greeting;
@@ -38,7 +39,7 @@ namespace K42un0k0SnsDeck.ViewModels
 
         public void OnOpenAccountListWindow(MainWindow self)
         {
-            var w = _getContainer().Resolve<AccountListWindow>();
+            var w = container.Resolve<AccountListWindow>();
             w.Owner = self;
             w.ShowDialog(); 
         }

@@ -6,6 +6,11 @@ using System.Threading;
 using K42un0k0SnsDeck.Infra.Http;
 using K42un0k0SnsDeck.Infra.DomainServices;
 using K42un0k0SnsDeck.DomainServices;
+using K42un0k0SnsDeck.Infra.Provider;
+using System;
+using System.IO;
+using K42un0k0SnsDeck.Constants;
+using K42un0k0SnsDeck.Infra.Dao.Json;
 
 namespace K42un0k0SnsDeck
 {
@@ -52,9 +57,13 @@ namespace K42un0k0SnsDeck
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<ITwitterClient, TwitterClient>();
+            containerRegistry.RegisterSingleton<IJsonProvider, JsonProvider>();
+            containerRegistry.RegisterInstance<IJsonProvider>(new JsonProvider(AppConfig.Singleton.JsonPath));
             containerRegistry.RegisterSingleton<ITwitterAccountRepository, TwitterAccountRepository>();
+            containerRegistry.RegisterSingleton<ITwitterAccountDao, TwitterAccountDao>();
             containerRegistry.RegisterSingleton<IFacebookClient, FacebookClient>();
             containerRegistry.RegisterSingleton<IFacebookAccountRepository, FacebookAccountRepository>();
+            containerRegistry.RegisterSingleton<IFacebookAccountDao, FacebookAccountDao>();
         }
     }
 }

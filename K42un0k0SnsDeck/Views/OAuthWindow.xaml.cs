@@ -34,6 +34,7 @@ namespace K42un0k0SnsDeck.Views
                     if (e.Uri.StartsWith(_callbackUrl))
                     {
                         _usecase.exec(new Uri(e.Uri));
+                        e.Cancel = true;
                     }
                 };
             }

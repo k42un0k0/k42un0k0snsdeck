@@ -31,6 +31,7 @@ namespace K42un0k0SnsDeck.Infra.Http
             var content = response.Content.ReadAsStringAsync().Result;
             var oauth_token = ComputeAuthTokenFromContent(content);
             return new Uri($"{TwitterUrl.OAUTH}?oauth_token={oauth_token}");
+            //return new Uri("https://twitter.com");
         }
 
         private HttpRequestMessage CreateRequest()
@@ -57,7 +58,7 @@ namespace K42un0k0SnsDeck.Infra.Http
         public string GetAccountName(TwitterAccountCredentials credentials)
         {
             var oauth = new OAuthHeaderGenerator(TwitterUrl.VERIFY_CREDENTIALS, WebRequestMethods.Http.Get);
-            oauth.SetAcessTokenAndSecret("", "");
+            oauth.SetAcessTokenAndSecret(credentials.AccessToken, credentials.AccessTokenSecret);
 
             var request = new HttpRequestMessage()
             {

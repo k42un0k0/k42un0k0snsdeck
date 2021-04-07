@@ -53,8 +53,8 @@ namespace K42un0k0SnsDeck.Infra.Provider.Tests
             using var file = new TemporaryFile();
             File.WriteAllText(file, sampleJson);
             var jsonProvider = new JsonProvider(file);
-            Assert.Equal("outside", jsonProvider.Restore<Sample>("sample").Key);
-            Assert.Collection(jsonProvider.Restore<List<Sample>>("list"),
+            Assert.Equal("outside", jsonProvider.Restore("sample", new Sample("")).Key);
+            Assert.Collection(jsonProvider.Restore("list",new List<Sample>()),
                 (item) => Assert.Equal("in list", item.Key));
         }
 

@@ -41,6 +41,7 @@ namespace K42un0k0SnsDeck.Infra.Dao.Json
                 dto.Id = id;
             }
             _data.Add(dto);
+            OnUpdateData();
         }
         public List<TwitterAccountDto> FindAll()
         {
