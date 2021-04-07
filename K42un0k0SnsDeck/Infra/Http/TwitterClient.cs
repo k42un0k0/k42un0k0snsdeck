@@ -14,6 +14,7 @@ namespace K42un0k0SnsDeck.Infra.Http
     public interface ITwitterClient
     {
         public Uri GetOAuthUrl();
+        public long GetId(TwitterAccountCredentials credentials);
 
         public string GetAccountName(TwitterAccountCredentials credentials);
         public TwitterAccountCredentials FetchCredentialsFromRedirectUrl(Uri redirectUrl);
@@ -53,6 +54,23 @@ namespace K42un0k0SnsDeck.Infra.Http
         {
             // oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik&oauth_token_secret=Kd75W4OQfb2oJTV0vzGzeXftVAwgMnEK9MumzYcM&oauth_callback_confirmed=true
             return message.Split("&")[0].Split("=")[1];
+        }
+
+        public long GetId(TwitterAccountCredentials credentials)
+        {
+            var oauth = new OAuthHeaderGenerator(TwitterUrl.VERIFY_CREDENTIALS, WebRequestMethods.Http.Get);
+            oauth.SetAcessTokenAndSecret(credentials.AccessToken, credentials.AccessTokenSecret);
+
+            var request = new HttpRequestMessage()
+            {
+                RequestUri = new Uri(TwitterUrl.VERIFY_CREDENTIALS),
+                Method = HttpMethod.Get,
+            };
+            request.Headers.Add("Authorization", oauth.Header);
+
+            var json = httpClient.SendAsync(request).Result.Content.ReadAsStringAsync().Result;
+            var obj = JObject.Parse(json);
+            return obj["id"].ToObject<long>();
         }
 
         public string GetAccountName(TwitterAccountCredentials credentials)

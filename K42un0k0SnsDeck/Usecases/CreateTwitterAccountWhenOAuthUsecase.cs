@@ -16,8 +16,9 @@ namespace K42un0k0SnsDeck.Usecases
         public void exec(Uri redirectUrl)
         {
             var credentials = twitterClient.FetchCredentialsFromRedirectUrl(redirectUrl);
+            var id = twitterClient.GetId(credentials);
             var accountName = twitterClient.GetAccountName(credentials);
-            var account = new TwitterAccount(0, credentials, accountName);
+            var account = new TwitterAccount(id, credentials, accountName);
             twitterAccountRepository.Add(account);
         }
     }
