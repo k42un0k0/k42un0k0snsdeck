@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace K42un0k0SnsDeck.Infra.Dto.Json
+namespace K42un0k0SnsDeck.Infra.Dao.Json
 {
     public class FacebookAccountDto
     {

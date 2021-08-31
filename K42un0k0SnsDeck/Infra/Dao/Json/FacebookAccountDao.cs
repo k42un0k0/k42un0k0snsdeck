@@ -1,5 +1,4 @@
-﻿using K42un0k0SnsDeck.Infra.Dto.Json;
-using K42un0k0SnsDeck.Infra.Provider;
+﻿using K42un0k0SnsDeck.Infra.Provider;
 using System;
 using System.Collections.Generic;
 
